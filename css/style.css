@@ -1,18 +1,40 @@
 body {
-    background-color: black;
+    font-family: 'Rock Salt', cursive;
+    background-color: #583408;
     color: #ffffff;
 }
-
-.text-center {
+th {
+    letter-spacing: 2px;
+    padding: 20px;
+}
+td {
+    letter-spacing: 1px;
+    padding: 20px;
+}
+tbody td, thead th, h5 {
     text-align: center;
 }
-
-.align-item {
-    align-items: center;
+tfoot th {
+    text-align: right;
 }
 
+.text-left {
+    text-align: left;
+}
 .menu-pic {
-    width: 20vw;
+    width: 100%;
     padding: 0.5vw;
 }
-
+.modal-content {
+    background-color: #583408;
+    color: darkgrey;
+}
+.modal-body table {
+    table-layout: fixed;
+    border: 3px solid darkgrey;
+    border-collapse: collapse;
+ }
+#navMenu {
+    text-decoration: none;
+    padding: 30px;
+}

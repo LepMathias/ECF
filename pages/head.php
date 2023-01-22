@@ -11,11 +11,3 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Le Quai Antique</title>
 </head>
-<header>
-    <nav class="container">
-        <div class="row justify-content-between align-item">
-            <a href="#"><h1 class="col text-white" name="title">Le Quai Antique</h1></a>
-            <a href="#" class="col-2 text-white"><h3>Contact</h3></a>
-        </div>
-    </nav>
-</header>

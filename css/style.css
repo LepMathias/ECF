@@ -1,7 +1,13 @@
+/*--------------------------------------------------------------
+# LEGAL NOTICES
+--------------------------------------------------------------*/
 body {
     font-family: 'Rock Salt', cursive;
     background-color: #583408;
     color: #ffffff;
+}
+.container {
+    max-height: 100vw;
 }
 th {
     letter-spacing: 2px;
@@ -21,9 +27,19 @@ tfoot th {
 .text-left {
     text-align: left;
 }
-.menu-pic {
+.pic-menu {
+    width: 100%;
+}
+.menus {
+    padding: 0.5vw;
+}
+.btn-menu {
     width: 100%;
     padding: 0.5vw;
+    background-color: #583408;
+    border: none;
+    color: darkgrey;
+    align-items: center;
 }
 .modal-content {
     background-color: #583408;
@@ -34,7 +50,18 @@ tfoot th {
     border: 3px solid darkgrey;
     border-collapse: collapse;
  }
-#navMenu {
+nav {
     text-decoration: none;
     padding: 30px;
+    background-color: #403F3E;
+}
+.card {
+    min-height: inherit;
+    background-color: #492A05;
+}
+#display-feedback{
+    padding: 0.5vw
+}
+label {
+    padding-top: 1vw;
 }

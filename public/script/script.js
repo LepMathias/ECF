@@ -18,6 +18,9 @@ $(function($) {
     $('#log-in').click(function() {
         $('#log-in-modal').modal('show');
     })
+    $('#log-out').click(function() {
+        $('location').attr('href', 'logout.php');
+    })
     $('#sign-up').click(function() {
         $('#sign-up-modal').modal('show');
     })
@@ -27,10 +30,10 @@ $(function($) {
     //})
 
     $('#homePage').click(function() {
-        document.location.href = "index.php";
+        document.location.href = "../pages/index.php";
     })
     $('#menusPage').click(function() {
-        document.location.href = "menus.php";
+        document.location.href = "../pages/menus.php";
     })
 
 });

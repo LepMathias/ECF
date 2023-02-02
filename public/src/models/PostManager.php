@@ -1,11 +1,12 @@
 <?php
-
+require_once 'Post.php';
 class PostManager
 {
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
+
     public function addFeedback(int $note, string $title, string $message)
     {
         $statement = $this->pdo->prepare('INSERT INTO posts (note, title, message) 
@@ -16,6 +17,7 @@ VALUES (:note, :title, :message)');
 
         return $statement->execute();
     }
+
     public function getPosts()
     {
         require_once 'Post.php';

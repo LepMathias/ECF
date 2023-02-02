@@ -1,5 +1,5 @@
 <?php
-
+require_once 'User.php';
 class UserManager
 {
     public function __construct(PDO $pdo)
@@ -27,14 +27,17 @@ VALUES (UUID(), :lastName, :firstName,:email, :phoneNumber, :password, :defaultN
 
     public function connectUser(string $email, string $password)
     {
-        require 'src/models/User.php';
         $statement = $this->pdo->prepare('SELECT * FROM users WHERE email = :email');
         $statement->setFetchMode(PDO::FETCH_CLASS, 'User');
         $statement->bindValue(':email', $email);
         if ($statement->execute()) {
             while ($user = $statement->fetch()) {
                 if ($user->isPasswordValid($password)) {
+                    session_start();
                     $_SESSION['id'] = $user->getId();
+                    $_SESSION['admin'] = $user->isAdmin;
+                    $_SESSION['firstName'] = $user->firstName;
+                    $_SESSION['lastName'] = $user->lastName;
                     return $user;
                 }
             }

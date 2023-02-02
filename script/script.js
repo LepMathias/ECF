@@ -7,7 +7,7 @@ $(function($) {
         $('#allergenes-modal').modal('show');
     })
     $('#galery_img').click(function() {
-        $('#galery-modal').modal('show');
+        $('#gallery-modal').modal('show');
     })
     $('#feedback').click(function() {
         $('#feedback-modal').modal('show');
@@ -18,7 +18,19 @@ $(function($) {
     $('#log-in').click(function() {
         $('#log-in-modal').modal('show');
     })
+    $('#sign-up').click(function() {
+        $('#sign-up-modal').modal('show');
+    })
+
+    //$('.gallery').mouseover(function (){
+    //    $('.img-title').css('display','block');
+    //})
+
     $('#homePage').click(function() {
         document.location.href = "index.php";
     })
+    $('#menusPage').click(function() {
+        document.location.href = "menus.php";
+    })
+
 });

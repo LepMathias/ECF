@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Le Quai Antique</title>
 </head>
-<?php
-include_once("header.php");
-?>
+<?php include_once("header.php"); ?>
 <body>
 
+
+<?php include_once("footer.php"); ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s
         mXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

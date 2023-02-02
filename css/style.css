@@ -1,67 +1,131 @@
-/*--------------------------------------------------------------
-# LEGAL NOTICES
---------------------------------------------------------------*/
 body {
-    font-family: 'Rock Salt', cursive;
     background-color: #583408;
     color: #ffffff;
+    font-family: 'Rock Salt', cursive;
 }
-.container {
-    max-height: 100vw;
+
+nav, footer {
+    background-color: #403F3E;
+    padding: 30px;
+    text-decoration: none;
 }
-th {
-    letter-spacing: 2px;
-    padding: 20px;
+
+footer p {
+    text-align: center;
+    font-family: "DejaVu Serif";
 }
+
+.btn #contact {
+    align-items: end;
+}
+/*--------------------------------------------------------------
+# Schedules table
+--------------------------------------------------------------*/
+tbody td, thead th, h5 {
+    text-align: center;
+}
+
 td {
     letter-spacing: 1px;
     padding: 20px;
 }
-tbody td, thead th, h5 {
-    text-align: center;
+
+th {
+    letter-spacing: 2px;
+    padding: 20px;
 }
+
 tfoot th {
     text-align: right;
+}
+
+.btn-menu, pic-menu {
+    align-items: center;
+    background-color: #583408;
+    border: none;
+    color: darkgrey;
+    margin: auto;
+    padding: 0.5vw;
+    width: 100%;
+}
+
+.menus {
+    margin: auto;
+    vertical-align: center;
+    padding: 0.5vw;
+}
+
+.modal-content {
+    background-color: #583408;
+    color: darkgrey;
+}
+
+.modal-body table {
+    border: 3px solid darkgrey;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.pic-menu {
+    margin: auto;
+    vertical-align: center;
+    width: 80%;
 }
 
 .text-left {
     text-align: left;
 }
-.pic-menu {
-    width: 100%;
+
+/*--------------------------------------------------------------
+# Form
+--------------------------------------------------------------*/
+form {
+    font-family: "DejaVu Serif";
 }
-.menus {
-    padding: 0.5vw;
-}
-.btn-menu {
-    width: 100%;
-    padding: 0.5vw;
-    background-color: #583408;
-    border: none;
-    color: darkgrey;
-    align-items: center;
-}
-.modal-content {
-    background-color: #583408;
-    color: darkgrey;
-}
-.modal-body table {
-    table-layout: fixed;
-    border: 3px solid darkgrey;
-    border-collapse: collapse;
- }
-nav {
-    text-decoration: none;
-    padding: 30px;
-    background-color: #403F3E;
-}
-.card {
-    min-height: inherit;
-    background-color: #492A05;
-}
-#display-feedback{
-    padding: 0.5vw
-}
+
 label {
     padding-top: 1vw;
+}
+
+select #note-select {
+    width: 5vw;
+}
+.card {
+    background-color: #492A05;
+    min-height: inherit;
+}
+
+/*--------------------------------------------------------------
+# Gallery
+--------------------------------------------------------------*/
+
+.hover {
+    align-items: center;
+    display: inline-block;
+    float: none;
+    margin: auto;
+    padding: 10px;
+    width: 28%;
+}
+.gallery-img {
+    max-width: 100%;
+    padding: 12px;
+}
+.img-title {
+    color: black;
+    display: flex;
+    font-size: 16px;
+    opacity: 0;
+    position: relative;
+    top: -30px;
+}
+.hover:hover .img-title{
+    background-color: darkgrey;
+    opacity: 1;
+}
+
+@media screen and (orientation: landscape) {
+    .gallery-img {
+        width: 100vw;
+    }
 }

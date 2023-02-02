@@ -134,24 +134,27 @@
                             </select>
                         </div>
                     </div>
-                    <label for="firstname" class="form-label">Nom</label>
-                    <input type="text" name="firstname" id="firstname" value="<?=$user->lastName;?>" class="form-control">
+                    <?php if (!isset($_SESSION['id'])): ?>
+                    <label for="lastname" class="form-label">Nom</label>
+                    <input type="text" name="lastname" id="lastname" value="<?=$_SESSION['lastname']?>" class="form-control">
 
-                    <label for="lastname" class="form-label">Prénom</label>
-                    <input type="text" name="lastname" id="lastname" value="<?=$user->firstName;?>" class="form-control">
+                    <label for="firstname" class="form-label">Prénom</label>
+                    <input type="text" name="firstname" id="firstname" value="<?=$_SESSION['firstname']?>" class="form-control">
+                    <?php endif;?>
 
-                    <label for="nbrGuest" class="form-label">Nombre de personne</label>
-                    <input type="number" name="nbrGuest" id="nbrGuest" value="<?=$user->defaultNbrGuest;?>" class="form-control">
+                    <label for="nbrOfGuest" class="form-label">Nombre de personne</label>
+                    <input type="number" name="nbrOfGuest" id="nbrOfGuest" value="<?=$_SESSION['defaultNbrGuest']?>" class="form-control">
 
                     <label for="emailAddress" class="form-label">Adresse e-mail</label>
-                    <input type="email" name="emailAddress" id="emailAddress" value="<?=$user->email;?>" class="form-control">
+                    <input type="email" name="emailAddress" id="emailAddress" value="<?=$_SESSION['email']?>" class="form-control">
 
                     <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$user->phoneNumber;?>" class="form-control">
+                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$_SESSION['phoneNumber']?>" class="form-control">
 
-                    <label for="messageReservation" class="form-label">Commentaire / Allergies</label>
-                    <textarea type="text" name="messageReservation" id="messageReservation" class="form-control" value="<?=$user->allergies;?>" rows="5"></textarea>
+                    <label for="allergies" class="form-label">Allergies</label>
+                    <textarea type="text" name="allergies" id="allergies" value="<?=$_SESSION['allergies']?>" class="form-control" rows="5"></textarea>
 
+                    <input name="reservation_form" value="newReservation" type="hidden"/>
                     <button type="submit" class="btn btn-menu">Submit</button>
                 </form>
             </div>
@@ -193,13 +196,13 @@
                 <form name="log-in" action="#" method="post">
                     <div class="row">
                         <div class="col">
-                            <label for="lastName" class="form-label">Nom</label>
-                            <input type="text" name="lastName" id="lastName" class="form-control" required>
+                            <label for="lastname" class="form-label">Nom</label>
+                            <input type="text" name="lastname" id="lastname" class="form-control" required>
                         </div>
 
                         <div class="col">
-                            <label for="firstName" class="form-label">Prénom</label>
-                            <input type="text" name="firstName" id="firstName" class="form-control" required>
+                            <label for="firstname" class="form-label">Prénom</label>
+                            <input type="text" name="firstname" id="firstname" class="form-control" required>
                         </div>
                     </div>
 

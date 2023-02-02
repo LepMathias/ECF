@@ -93,6 +93,9 @@ select #note-select {
 .card {
     background-color: #492A05;
     min-height: inherit;
+    padding: 0.5vw;
+    position: relative;
+    top: 10px;
 }
 
 /*--------------------------------------------------------------
@@ -122,10 +125,4 @@ select #note-select {
 .hover:hover .img-title{
     background-color: darkgrey;
     opacity: 1;
-}
-
-@media screen and (orientation: landscape) {
-    .gallery-img {
-        width: 100vw;
-    }
 }

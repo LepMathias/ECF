@@ -1,0 +1,28 @@
+body {
+    background-color: #583408;
+    color: #ffffff;
+    font-family: "DejaVu Serif";
+}
+
+nav, footer {
+    background-color: #403F3E;
+    font-family: 'Rock Salt', cursive;
+    padding: 30px;
+    text-decoration: none;
+}
+
+.navbarParam {
+    background-color: white;
+    color: darkgrey;
+}
+
+.btn-param {
+    display: inline-block;
+    justify-content: space-around;
+}
+
+.form-label {
+    text-align: center;
+    align-items: center;
+}
+

@@ -7,15 +7,15 @@ class UserManager
         $this->pdo = $pdo;
     }
 
-    public function addUser(string $lastName, string $firstName, string $email, string $phoneNumber,
+    public function addUser(string $lastname, string $firstname, string $email, string $phoneNumber,
                             string $password, int $defaultNbrGuest, string $allergies)
     {
 
         $statement = $this->pdo->prepare('INSERT INTO users 
-    (id, lastName, firstName, email, phoneNumber, password, defaultNbrGuest, allergies) 
-VALUES (UUID(), :lastName, :firstName,:email, :phoneNumber, :password, :defaultNbrGuest, :allergies)');
-        $statement->bindValue(':lastName', $lastName);
-        $statement->bindValue(':firstName', $firstName);
+    (id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies) 
+VALUES (UUID(), :lastname, :firstname,:email, :phoneNumber, :password, :defaultNbrGuest, :allergies)');
+        $statement->bindValue(':lastname', $lastname);
+        $statement->bindValue(':firstname', $firstname);
         $statement->bindValue(':email', $email);
         $statement->bindValue(':phoneNumber', $phoneNumber);
         $statement->bindValue(':password', password_hash($password, PASSWORD_BCRYPT));
@@ -35,9 +35,13 @@ VALUES (UUID(), :lastName, :firstName,:email, :phoneNumber, :password, :defaultN
                 if ($user->isPasswordValid($password)) {
                     session_start();
                     $_SESSION['id'] = $user->getId();
-                    $_SESSION['admin'] = $user->isAdmin;
-                    $_SESSION['firstName'] = $user->firstName;
-                    $_SESSION['lastName'] = $user->lastName;
+                    $_SESSION['admin'] = $user->getisAdmin();
+                    $_SESSION['firstname'] = $user->firstname;
+                    $_SESSION['lastname'] = $user->lastname;
+                    $_SESSION['defaultNbrGuest'] = $user->defaultNbrGuest;
+                    $_SESSION['email'] = $user->email;
+                    $_SESSION['phoneNumber'] = $user->phoneNumber;
+                    $_SESSION['allergies'] = $user->allergies;
                     return $user;
                 }
             }

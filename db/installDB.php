@@ -20,8 +20,8 @@ try {
 /*Création table "users"*/
                 if ($restoPdo->exec('CREATE TABLE users (
     id CHAR(36) PRIMARY KEY NOT NULL,
-    lastName VARCHAR(50) NOT NULL,
-    firstName VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    firstname VARCHAR(50) NOT NULL,
     email VARCHAR(254) NOT NULL,
     phoneNumber VARCHAR(20) NOT NULL,
     password CHAR(60) NOT NULL,
@@ -29,7 +29,38 @@ try {
     allergies VARCHAR(150),
     isAdmin INT(1) DEFAULT 0
 )') !== false){
-                    echo "Installation réussie";
+/*Création table "reservations Utilisateurs connectés*/
+                    if ($restoPdo->exec('CREATE TABLE reservations (
+    userId CHAR(36),
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREmENT,
+    date CHAR(10) NOT NULL,
+    hour CHAR(5) NOT NULL,
+    nbrOfGuest CHAR(3) NOT NULL,
+    lastname VARCHAR(50),
+    firstname VARCHAR(50),
+    phoneNumber VARCHAR(50),
+    allergies VARCHAR(150),
+    FOREIGN KEY (userId) REFERENCES users(id)
+    )')) {
+/*Création table "reservations Utilisateurs non connectés*/
+   /*                     if ($restoPdo->exec('CREATE TABLE reservationsNoLog (
+    userId CHAR(36),
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREmENT,
+    date CHAR(10) NOT NULL,
+    hour CHAR(5) NOT NULL,
+    nbrOfGuest CHAR(3) NOT NULL,
+    FOREIGN KEY (userId) REFERENCES users(id)
+    )')) {
+                            echo "Installation réussie";
+                        } else {
+                            "Impossible de créer la table 'reservationsNoLog'";
+                        }*/
+                        echo "Installation réussie";
+                    } else {
+                        echo "Impossible de créer la table 'reservationsLogIn'";
+                    }
+                } else {
+                    echo "Impossible de créer la table 'users'";
                 }
             } else {
                 echo "Impossible de créer la table 'posts'";

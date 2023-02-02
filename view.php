@@ -19,27 +19,27 @@ session_start();
         <div class="container-fluid">
             <nav class="row align-items-center" id="navMenu">
                 <div class="col-md-3">
-                    <button class="btn" id="homePage"><h1 class="text-white">Le Quai Antique</h1></button>
+                    <a href="#" class="btn" id="homePage"><h1 class="text-white">Le Quai Antique</h1></a>
                 </div>
                 <div class="col-md-6 justify-content-md-start">
                     <div class="row">
-                        <button class="btn" id="menusPage"><h2 class="text-white">Nos menus</h2></button>
+                        <a href="public/pages/menus.php" class="btn" id="menusPage"><h2 class="text-white">Nos menus</h2></a>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <?php if(isset($_SESSION['id']) && $_SESSION['admin'] === 1): ?>
+                    <?php if(isset($_SESSION) && $_SESSION['admin'] === 1): ?>
                         <div class="row">
-                            <p class="text-center"><?= $_SESSION['firstName'].' '.$_SESSION['lastName'] ?></p>
+                            <p class="text-center"><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p>
                         </div>
                         <div class="row">
-                            <a href="../../admin/pages/parameters.php" class="btn" id="param"><h5 class="text-white">Paramètres</h5></a>
+                            <a href="admin/pages/Parameters.php" class="btn" id="param"><h5 class="text-white">Paramètres</h5></a>
                         </div>
                         <div class="row">
                             <a href="public/pages/logout.php" class="btn" id="log-ou"><h5 class="text-white">Log out</h5></a>
                         </div>
-                    <?php elseif(isset($_SESSION['id']) && $_SESSION['admin'] === 0): ?>
+                    <?php elseif(isset($_SESSION) && $_SESSION['admin'] === 0): ?>
                         <div class="row">
-                            <p class="text-center"><?= $_SESSION['firstName'].' '.$_SESSION['lastName'] ?></p>
+                            <p class="text-center"><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p>
                         </div>
                         <div class="row">
                             <a href="public/pages/logout.php" class="btn" id="log-out"><h5 class="text-white">Log out</h5></a>
@@ -58,22 +58,52 @@ session_start();
     </header>
 
     <body>
-    <div class="container-fluid">
-        <div class="row">
-                <div class="col-md hover">
-                    <img src="public/src/img/gallery/plat-1.jpg" class="gallery-img"/>
-                    <p class="img-title">La traditionelle tartiflette</p>
+    <div class="container">
+        <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+            <!-- Les indicateurs-->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="2"></button>
+            </div>
+            <!-- Le carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <img class="img-fluid d-block h-25" src="public/src/img/gallery/plat-2.webp" alt="Premier slide">
+                        <div class="carousel-caption">
+                            <h5>Fleur Tulips</h5>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md hover">
-                    <img src="public/src/img/gallery/plat-2.webp" class="gallery-img"/>
-                    <p class="img-title">La mini-tartiflette minute self-making</p>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <img class="img-fluid d-block h-25" src="public/src/img/gallery/plat-3.jpg" alt="Second slide">
+                        <div class="carousel-caption">
+                            <h5>Fleur Rose</h5>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md hover">
-                    <img src="public/src/img/gallery/plat-3.jpg" class="gallery-img"/>
-                    <p class="img-title">Les bons crozets de chez nous</p>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <img class="img-fluid d-block h-25" src="public/src/img/gallery/plat-4.jpg" alt="Troisième slide">
+                        <div class="carousel-caption">
+                            <h5>Fleur Marguerite</h5>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <!-- Les commandes de contrôle-->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
         </div>
     </div>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
@@ -107,9 +137,10 @@ session_start();
             </div>
         </div>
     </div>
+
     <?php
-    include_once("public/pages/footer.php");
-    include_once("public/pages/popUpModal.php");
+    include_once 'commonFiles/includes/footer.php';
+    include_once 'public/pages/popUpModal.php';
     ?>
 
 
@@ -149,9 +180,7 @@ session_start();
             $('#homePage').click(function() {
                 document.location.href = "index.php";
             })
-            $('#menusPage').click(function() {
-                document.location.href = "public/pages/menus.php";
-            })
+
         });
     </script>
     </body>

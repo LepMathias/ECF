@@ -135,22 +135,22 @@
                         </div>
                     </div>
                     <label for="firstname" class="form-label">Nom</label>
-                    <input type="text" name="firstname" id="firstname" class="form-control">
+                    <input type="text" name="firstname" id="firstname" value="<?=$user->lastName;?>" class="form-control">
 
                     <label for="lastname" class="form-label">Prénom</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control">
+                    <input type="text" name="lastname" id="lastname" value="<?=$user->firstName;?>" class="form-control">
 
                     <label for="nbrGuest" class="form-label">Nombre de personne</label>
-                    <input type="number" name="nbrGuest" id="nbrGuest" class="form-control">
+                    <input type="number" name="nbrGuest" id="nbrGuest" value="<?=$user->defaultNbrGuest;?>" class="form-control">
 
                     <label for="emailAddress" class="form-label">Adresse e-mail</label>
-                    <input type="email" name="emailAddress" id="emailAddress" class="form-control">
+                    <input type="email" name="emailAddress" id="emailAddress" value="<?=$user->email;?>" class="form-control">
 
                     <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control">
+                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$user->phoneNumber;?>" class="form-control">
 
                     <label for="messageReservation" class="form-label">Commentaire / Allergies</label>
-                    <textarea type="text" name="messageReservation" id="messageReservation" class="form-control" rows="5"></textarea>
+                    <textarea type="text" name="messageReservation" id="messageReservation" class="form-control" value="<?=$user->allergies;?>" rows="5"></textarea>
 
                     <button type="submit" class="btn btn-menu">Submit</button>
                 </form>

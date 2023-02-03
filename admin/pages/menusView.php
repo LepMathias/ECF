@@ -62,13 +62,13 @@ session_start();
 <div class="container-fluid">
     <div class="row navbarParam justify-content-around">
         <a href="galleryView.php" class="col btn btn-param" id="gallery-btn">Gallerie Photos<i
-                    class="bi bi-caret-down-fill"></i></a>
+                class="bi bi-caret-down-fill"></i></a>
         <a href="menusView.php" class="col btn btn-param" id="carte-btn">Carte et Menus<i
-                    class="bi bi-caret-down-fill"></i></a>
+                class="bi bi-caret-down-fill"></i></a>
         <a href="schedulesView.php" class="col btn btn-param" id="hour-btn">Heures d'ouverture<i
-                    class="bi bi-caret-down-fill"></i></a>
+                class="bi bi-caret-down-fill"></i></a>
         <a href="reservations.php" class="col btn btn-param" id="reservation-btn">Réservations<i
-                    class="bi bi-caret-down-fill"></i></a>
+                class="bi bi-caret-down-fill"></i></a>
     </div>
 </div>
 
@@ -80,10 +80,10 @@ session_start();
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 <script>
-$(function ($){
-    $('#deletePicture').click(function() {
-        ;
+    $(function ($){
+        $('#deletePicture').click(function() {
+            ;
+        })
     })
-})
 </script>
 </body>

@@ -2,6 +2,8 @@
 require 'public/src/models/PostManager.php';
 require 'public/src/models/UserManager.php';
 require 'public/src/models/ReservationManager.php';
+require 'public/src/models/PictureManager.php';
+require 'admin/pages/Parameters.php';
 
 session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
@@ -37,15 +39,10 @@ if (!empty($_POST['reservation_form'])) {
     }
 }
 
-
-/*
-    if (!isset($_SESSION['id'])) {
-
-    } else {
-
-    }
-*/
-
-
 include 'view.php';
+
+
+
+
+
 

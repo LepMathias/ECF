@@ -21,8 +21,23 @@ nav, footer {
     justify-content: space-around;
 }
 
+/*--------------------------------------------------------------
+# Form
+--------------------------------------------------------------*/
+
 .form-label {
     text-align: center;
     align-items: center;
+    padding-top: 1vw;
 }
 
+.card {
+    color: black;
+    margin: 0.5vw;
+    padding: 0.2vw;
+}
+
+.gallery-menu {
+    display: none;
+    z-index: 1500;
+}

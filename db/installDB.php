@@ -43,20 +43,7 @@ try {
                     allergies VARCHAR(150),
                     FOREIGN KEY (userId) REFERENCES users(id)
                     )')) {
-
-                        /*Création table "picture*/
-                        if ($restoPdo->exec('CREATE TABLE pictures (
-                        img_id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                        img_title VARCHAR(50) NOT NULL,
-                        img_size VARCHAR(25) NOT NULL,
-                        img_type VARCHAR(25),
-                        date CHAR(10) NOT NULL,
-                        file LONGBLOB
-                        )')) {
-                            echo "Installation réussie";
-                        } else {
-                            echo "Impossible de créer la table 'pictures'";
-                        }
+                        echo "Installation réussie";
                     } else {
                         echo "Impossible de créer la table 'reservations'";
                     }
@@ -76,3 +63,16 @@ try {
     file_put_contents('dblogs.log', $e->getMessage(), FILE_APPEND);
     echo "Impossible de détruire la DB éxistante";
 }
+
+CREATE TABLE categories (
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL);
+
+
+CREATE TABLE meals (
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    description VARCHAR(250),
+    price CHAR(3) NOT NULL,
+    categoryId INT(11) NOT NULL,
+    FOREIGN KEY (categoryId) REFERENCES categories(id));

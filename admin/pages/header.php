@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <nav class="row align-items-center" id="navMenu">
             <div class="col-md-3">
-                <button class="btn" id="homePage"><h1 class="text-white">Le Quai Antique</h1></button>
+                <a href="../../view.php" class="btn" id="homePage"><h1 class="text-white">Le Quai Antique</h1></a>
             </div>
             <div class="col-md-6 justify-content-md-start">
                 <div class="row">
@@ -15,7 +15,7 @@
                         <p class="text-center"><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p>
                     </div>
                     <div class="row">
-                        <a href="../../admin/pages/Parameters.php" class="btn" id="param"><h5 class="text-white">Paramètres</h5></a>
+                        <a href="#" class="btn" id="param"><h5 class="text-white">Paramètres</h5></a>
                     </div>
                     <div class="row">
                         <a href="../../public/pages/logout.php" class="btn" id="log-ou"><h5 class="text-white">Log out</h5></a>

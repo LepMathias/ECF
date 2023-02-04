@@ -1,5 +1,5 @@
 <?php
-require 'Picture.php';
+
 class PictureManager
 {
     public function getExtensionFromMimeType(string $mimeType): ?string

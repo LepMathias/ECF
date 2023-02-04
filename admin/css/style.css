@@ -36,8 +36,3 @@ nav, footer {
     margin: 0.5vw;
     padding: 0.2vw;
 }
-
-.gallery-menu {
-    display: none;
-    z-index: 1500;
-}

@@ -29,9 +29,22 @@ try {
                     allergies VARCHAR(150),
                     isAdmin INT(1) DEFAULT 0
                 )') !== false){
+                    /*Création du 1er ADMIN*/
+                    $statement = $restoPdo->prepare('INSERT INTO users (
+                   id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin)
+                   VALUES (UUID(), :lastname, :firstname, :email, :phoneNumber, :password, :nbr, :allergies, :isAdmin)');
+                    $statement->bindValue(':lastname', 'Admin');
+                    $statement->bindValue(':firstname', 'Admin');
+                    $statement->bindValue(':email', 'admin@gmail.com');
+                    $statement->bindValue(':phoneNumber', '0202');
+                    $statement->bindValue(':password', password_hash('0202', PASSWORD_BCRYPT));
+                    $statement->bindValue(':nbr', 2);
+                    $statement->bindValue(':allergies', '');
+                    $statement->bindValue(':isAdmin', 1);
 
-                    /*Création table "reservations*/
-                    if ($restoPdo->exec('CREATE TABLE reservations (
+                    if ($statement->execute()) {
+                        /*Création table "reservations*/
+                        if ($restoPdo->exec('CREATE TABLE reservations (
                     userId CHAR(36),
                     id INT(11) PRIMARY KEY NOT NULL AUTO_INCREmENT,
                     date CHAR(10) NOT NULL,
@@ -43,9 +56,12 @@ try {
                     allergies VARCHAR(150),
                     FOREIGN KEY (userId) REFERENCES users(id)
                     )') !== false) {
-                        echo "Installation réussie";
+                            echo "Installation réussie";
+                        } else {
+                            echo "Impossible de créer la table 'reservations'";
+                        }
                     } else {
-                        echo "Impossible de créer la table 'reservations'";
+                        echo "Impossible de créer Admin";
                     }
                 } else {
                     echo "Impossible de créer la table 'users'";

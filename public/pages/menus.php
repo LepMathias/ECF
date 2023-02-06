@@ -32,7 +32,7 @@ session_start();
                         <p class="text-center"><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p>
                     </div>
                     <div class="row">
-                        <a href="../../admin/pages/Parameters.php" class="btn" id="param"><h5 class="text-white">Paramètres</h5></a>
+                        <a href="../../admin/pages/parametersView.php" class="btn" id="param"><h5 class="text-white">Paramètres</h5></a>
                     </div>
                     <div class="row">
                         <a href="logout.php" class="btn" id="log-ou"><h5 class="text-white">Log out</h5></a>

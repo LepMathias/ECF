@@ -1,7 +1,20 @@
 <?php
 session_start();
+require '../../public/src/models/PictureManager.php';
+require '../../public/src/models/MealManager.php';
 
+$pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
 
+$mealManager = new MealManager($pdo);
+if (!empty($_POST['category']))
+    $mealManager->addMeal($_POST['category'], $_POST['title'], $_POST['description'], $_POST['price']);
+
+$pictureManager = new PictureManager();
+if (!empty($_FILES['uploadedFile'])) {
+    $pictureManager->isUploadSuccessful($_FILES['uploadedFile']);
+}
+
+$files = $pictureManager->getUploadedFiles();
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -18,35 +31,50 @@ session_start();
     <title>Le Quai Antique</title>
 </head>
 <?php
-include 'header.php';
+include '../../commonFiles/includes/header.php';
+include '../includes/headerParam.php'
 ?>
 <body>
+<div class="container-fluid gallery-menu" id="gallery-menu">
+    <div id="gallery-menu">
+        <div class="row ">
+            <div class="col-md-2">
+                <form name="gallery-form" enctype="multipart/form-data" method="post" action="#">
+                    <label class="form-label text-center" for="uploadedFile">Choisissez une photo à ajouter</label>
+                    <input class="form-control" type="file" id="uploadedFile" name="uploadedFile" accept="image/png, imgae/jpeg, image/jpg, image/gif">
 
-<div class="container-fluid">
-    <div class="row navbarParam justify-content-around">
-        <a href="galleryView.php" class="col btn btn-param" id="gallery-btn">Gallerie Photos<i
-                class="bi bi-caret-down-fill"></i></a>
-        <a href="menusView.php" class="col btn btn-param" id="carte-btn">Carte et Menus<i
-                class="bi bi-caret-down-fill"></i></a>
-        <a href="schedulesView.php" class="col btn btn-param" id="hour-btn">Heures d'ouverture<i
-                class="bi bi-caret-down-fill"></i></a>
-        <a href="reservations.php" class="col btn btn-param" id="reservation-btn">Réservations<i
-                class="bi bi-caret-down-fill"></i></a>
+                    <label class="form-label" for="title">Nom de la photo</label>
+                    <input class="form-control" type="text" id="title" name="pictureTitle">
+
+                    <input name="upload-picture" value="pictureUploaded" type="hidden"/>
+                    <button type="submit" class="btn btn-menu">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <?php
+                    foreach ($files as $file) {
+                        include '../includes/pictureView.php';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="container-fluid" id="menus">
+<div class="container-fluid menus-menu" id="menus-menu">
     <div class="card" id="menu-item">
-        <form class="row">
+        <form class="row" method="post" action="#">
             <div class="col-9 card-header">
                 <div class="card-title">
                     <h3>Entrées</h3>
-                    <label class="form-label" for="titleMeal"><h5>Titre</h5></label>
-                    <input class="form-control" type="text" name="titleMeal" id="titleMeal">
+                    <label class="form-label" for="title"><h5>Titre</h5></label>
+                    <input class="form-control" type="text" name="title" id="title">
                 </div>
                 <div class="card-body">
-                    <label class="form-label" for="descriptiveMeal">Descriptif</label>
-                    <textarea class="form-control" type="text" name="descriptiveMeal" id="descriptiveMeal"></textarea>
+                    <label class="form-label" for="description">Descriptif</label>
+                    <textarea class="form-control" type="text" name="description" id="description"></textarea>
                 </div>
             </div>
             <div class="col-3 justify-content-between">
@@ -54,7 +82,7 @@ include 'header.php';
                     <div class="row">
                         <label class="form-label" for="price"><h5>Prix €</h5></label>
                         <input class="form-control d-inline-block" type="text" name="price" id="price">
-                        <input class="form-control" type="hidden" name="category" value="starter">
+                        <input class="form-control" type="hidden" name="category" value="1">
                     </div>
                     <div class="row mt-5">
                         <button class="btn btn-success" type="submit" id="addMeal">
@@ -71,12 +99,13 @@ include 'header.php';
         </form>
     </div>
     <div class="card" id="menu-item">
-        <form class="row">
+        <form class="row" method="post" action="#">
             <div class="col-9 card-header">
                 <div class="card-title">
                     <h3>Plats</h3>
                     <label class="form-label" for="titleMeal"><h5>Titre</h5></label>
                     <input class="form-control" type="text" name="titleMeal" id="titleMeal">
+                    <input class="form-control" type="hidden" name="category" value="2">
                 </div>
                 <div class="card-body">
                     <label class="form-label" for="descriptiveMeal">Descriptif</label>
@@ -103,12 +132,13 @@ include 'header.php';
             </div>
         </form>
     </div><div class="card" id="menu-item">
-        <form class="row">
+        <form class="row" method="post" action="#">
             <div class="col-9 card-header">
                 <div class="card-title">
                     <h3>Desserts</h3>
                     <label class="form-label" for="titleMeal"><h5>Titre</h5></label>
                     <input class="form-control" type="text" name="titleMeal" id="titleMeal">
+                    <input class="form-control" type="hidden" name="category" value="3">
                 </div>
                 <div class="card-body">
                     <label class="form-label" for="descriptiveMeal">Descriptif</label>
@@ -144,17 +174,8 @@ include 'header.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-
 <script>
     $(function ($){
-
-       /* $('#addMeal').click(function() {
-            let menus = document.getElementById('menus');
-            let menu_item = document.getElementById('menu-item');
-            let new_item = menu_item.cloneNode(true);
-            menus.appendChild(new_item);
-        })
-        */
     })
 </script>
 </body>

@@ -28,7 +28,8 @@ try {
                     defaultNbrGuest INT(2) NOT NULL,
                     allergies VARCHAR(150),
                     isAdmin INT(1) DEFAULT 0
-                )') !== false){
+                    )') !== false){
+
                     /*Création du 1er ADMIN*/
                     $statement = $restoPdo->prepare('INSERT INTO users (
                    id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin)
@@ -43,20 +44,46 @@ try {
                     $statement->bindValue(':isAdmin', 1);
 
                     if ($statement->execute()) {
+
                         /*Création table "reservations*/
                         if ($restoPdo->exec('CREATE TABLE reservations (
-                    userId CHAR(36),
-                    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREmENT,
-                    date CHAR(10) NOT NULL,
-                    hour CHAR(5) NOT NULL,
-                    nbrOfGuest CHAR(3) NOT NULL,
-                    lastname VARCHAR(50),
-                    firstname VARCHAR(50),
-                    phoneNumber VARCHAR(50),
-                    allergies VARCHAR(150),
-                    FOREIGN KEY (userId) REFERENCES users(id)
-                    )') !== false) {
-                            echo "Installation réussie";
+                            userId CHAR(36),
+                            id INT(11) PRIMARY KEY NOT NULL AUTO_INCREmENT,
+                            date CHAR(10) NOT NULL,
+                            hour CHAR(5) NOT NULL,
+                            nbrOfGuest CHAR(3) NOT NULL,
+                            lastname VARCHAR(50),
+                            firstname VARCHAR(50),
+                            phoneNumber VARCHAR(50),
+                            allergies VARCHAR(150),
+                            FOREIGN KEY (userId) REFERENCES users(id)
+                            )') !== false) {
+
+                            /*Création table categoriesMeal*/
+                            if ($restoPdo->exec('CREATE TABLE categoriesMeal (
+                                id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                                name VARCHAR(20) NOT NULL);') !== false) {
+
+                                /*Alimentation de la categoriesMeal*/
+                                $restoPdo->exec("INSERT INTO categoriesMeal (name) VALUES ('starter')");
+                                $restoPdo->exec("INSERT INTO categoriesMeal (name) VALUES ('main course')");
+                                $restoPdo->exec("INSERT INTO categoriesMeal (name) VALUES ('dessert')");
+
+                                /*Création table Meal*/
+                                if ($restoPdo->exec('CREATE TABLE meals (
+                                id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                                title VARCHAR(50) NOT NULL,
+                                description VARCHAR(250),
+                                price CHAR(3) NOT NULL,
+                                categoryId INT(1) NOT NULL,
+                                FOREIGN KEY (categoryId) REFERENCES categoriesMeal(id));') !== false) {
+                                    echo "Installation réussie";
+                                } else {
+                                    echo "Impossible de créer la table Meal";
+                                }
+                            } else {
+                                echo "Impossible de créer la table categorieMeal";
+                            }
                         } else {
                             echo "Impossible de créer la table 'reservations'";
                         }
@@ -79,16 +106,11 @@ try {
     file_put_contents('dblogs.log', $e->getMessage().PHP_EOL, FILE_APPEND);
 }
 /*
-CREATE TABLE categories (
-    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(20) NOT NULL);
+
+INSERT INTO categoriesMeal (id, name) VALUES ('1', 'starter')
+INSERT INTO categoriesMeal (id, name) VALUES ('1', 'main course')
+INSERT INTO categoriesMeal (id, name) VALUES ('1', 'dessert')
 
 
-CREATE TABLE meals (
-    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50) NOT NULL,
-    description VARCHAR(250),
-    price CHAR(3) NOT NULL,
-    categoryId INT(11) NOT NULL,
-    FOREIGN KEY (categoryId) REFERENCES categories(id));
+
 */

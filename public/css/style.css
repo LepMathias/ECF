@@ -12,7 +12,7 @@ nav, footer {
 
 footer p {
     text-align: center;
-    font-family: "DejaVu Serif";
+    font-family: "DejaVu Serif", serif;
 }
 
 .btn #contact {

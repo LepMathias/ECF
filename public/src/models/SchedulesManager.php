@@ -6,6 +6,7 @@ class SchedulesManager
     {
         $this->pdo = $pdo;
     }
+
     public function getSchedules()
     {
         $statement = $this->pdo->prepare('SELECT * FROM schedules');
@@ -13,14 +14,20 @@ class SchedulesManager
         $statement->execute();
 
         return $statement->fetchAll();
-
     }
-    public function getMenus()
+
+    public function updateSchedules(string $startDej, string $endDej, string $startDin, string $endDin, int $id)
     {
-        $statement = $this->pdo->prepare('SELECT * FROM menus');
-        $statement->setFetchMode(PDO::FETCH_CLASS, 'Menu');
+        $statement = $this->pdo->prepare("UPDATE schedules
+            SET startDej = :startDej, endDej = :endDej, startDin = :startDin, endDin = :endDin
+            WHERE id = :id");
+        $statement->bindValue(':startDej', $startDej);
+        $statement->bindValue(':endDej', $endDej);
+        $statement->bindValue(':startDin', $startDin);
+        $statement->bindValue(':endDin', $endDin);
+        $statement->bindValue(':id', $id);
+        echo "exe Ok";
         $statement->execute();
 
-        return $statement->fetchAll();
     }
 }

@@ -15,7 +15,7 @@
                     </thead>
                     <?php
                     foreach ($schedules as $schedule) {
-                        include 'admin/includes/schedulesView.php';
+                        include 'schedulesView.php';
                     }
                     ?>
                 </table>

@@ -46,12 +46,12 @@ tbody td, thead th, h5 {
 
 td {
     letter-spacing: 1px;
-    padding: 20px;
+    padding: 10px;
 }
 
 th {
     letter-spacing: 2px;
-    padding: 20px;
+    padding: 10px;
 }
 
 tfoot th {

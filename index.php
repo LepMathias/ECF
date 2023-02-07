@@ -66,18 +66,18 @@ include 'logiq.php';
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="0" class="active"></button>
                 <?php
-                /*for ($i = 1; $i <= count($files); $i++) {
+                for ($i = 1; $i <= count($files); $i++) {
                     include 'public/includes/buttonCarousel.php';
-                }*/
+                }
                 ?>
             </div>
             <!-- Le carousel -->
             <div class="carousel-inner">
                 <?php
-                /*include 'public/includes/firstDisplayCarousel.php';
+                include 'public/includes/firstDisplayCarousel.php';
                 foreach ($files as $file){
                     include 'public/includes/displayCarousel.php';
-                }*/
+                }
                 ?>
             </div>
             <!-- Les commandes de contrôle -->
@@ -124,7 +124,7 @@ include 'logiq.php';
 
     <?php
     include_once 'commonFiles/includes/footer.php';
-    include_once 'public/pages/popUpModal.php';
+    include_once 'public/includes/popUpModal.php';
     ?>
     </body>
 

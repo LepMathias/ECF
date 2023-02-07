@@ -55,10 +55,12 @@ class PictureManager
     }
     public function getFirstPic()
     {
-        return $this->getUploadedFiles()[0];
+        $dir = 'public/src/img/uploads/';
+        return array_slice(scandir($dir), 2)[0];
     }
     public function getRestPic()
     {
-        return array_slice($this->getUploadedFiles(), 1);
+        $dir = 'public/src/img/uploads/';
+        return array_slice(array_slice(scandir($dir), 2), 1);
     }
 }

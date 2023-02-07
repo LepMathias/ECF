@@ -9,7 +9,7 @@ class Schedules
     public string $startDin;
     public string $endDin;
 
-    public function getIs(): int
+    public function getId(): int
     {
         return $this->id;
     }

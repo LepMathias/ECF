@@ -6,7 +6,7 @@ require 'public/src/models/PictureManager.php';
 require 'public/src/models/MealManager.php';
 require 'public/src/models/SchedulesManager.php';
 
-$pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
+$pdo = new PDO('mysql:host=127.0.0.1;dbname=restaurant', 'root', '');
 $postManager = new PostManager($pdo);
 $userManager = new UserManager($pdo);
 $reservationManager = new ReservationManager($pdo);
@@ -14,10 +14,10 @@ $mealManager = new MealManager($pdo);
 
 /*Display Pictures in carousel*/
 $pictureManager = new PictureManager();
-/*
+
 $firstPic = $pictureManager->getFirstPic();
 $files = $pictureManager->getRestPic();
-*/
+
 
 /*Display Schedules*/
 $schedulesManager = new SchedulesManager($pdo);

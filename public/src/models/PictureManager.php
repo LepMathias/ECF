@@ -48,11 +48,23 @@ class PictureManager
             echo "Erreur de l'upload";
         }
     }
+
+    /**
+     * Function for AdminPage
+     */
     public function getUploadedFiles()
     {
         $dir = '../../public/src/img/uploads/';
         return array_slice(scandir($dir), 2);
     }
+    public function deleteFile($file): void
+    {
+        unlink("../../public/src/img/uploads/$file");
+    }
+
+    /**
+     * Functions for GuestView on carousel
+     */
     public function getFirstPic()
     {
         $dir = 'public/src/img/uploads/';

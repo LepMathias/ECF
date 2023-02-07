@@ -6,12 +6,17 @@ require '../../public/src/models/MealManager.php';
 $pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
 
 $mealManager = new MealManager($pdo);
-if (!empty($_POST['category']))
+if (!empty($_POST['category'])) {
     $mealManager->addMeal($_POST['category'], $_POST['title'], $_POST['description'], $_POST['price']);
+}
 
 $pictureManager = new PictureManager();
 if (!empty($_FILES['uploadedFile'])) {
     $pictureManager->isUploadSuccessful($_FILES['uploadedFile']);
+}
+
+if (!empty($_POST['file'])) {
+    $pictureManager->deleteFile($_POST['file']);
 }
 
 $files = $pictureManager->getUploadedFiles();

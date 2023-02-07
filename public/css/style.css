@@ -15,11 +15,11 @@ footer p {
     font-family: "DejaVu Serif", serif;
 }
 
-.btn #contact {
-    align-items: end;
+.text-left {
+    text-align: left;
 }
 /*--------------------------------------------------------------
-# Schedules table
+Schedules table
 --------------------------------------------------------------*/
 tbody td, thead th, h5 {
     text-align: center;
@@ -39,7 +39,10 @@ tfoot th {
     text-align: right;
 }
 
-.btn-menu, pic-menu {
+/*--------------------------------------------------------------
+Main pages Images
+--------------------------------------------------------------*/
+.btn-menu {
     align-items: center;
     background-color: #583408;
     border: none;
@@ -48,13 +51,20 @@ tfoot th {
     padding: 0.5vw;
     width: 100%;
 }
+.pic-menu {
+    margin: auto;
+    vertical-align: center;
+    width: 80%;
+}
 
 .menus {
     margin: auto;
     vertical-align: center;
     padding: 0.5vw;
 }
-
+/*--------------------------------------------------------------
+Modal
+--------------------------------------------------------------*/
 .modal-content {
     background-color: #583408;
     color: darkgrey;
@@ -64,16 +74,6 @@ tfoot th {
     border: 3px solid darkgrey;
     border-collapse: collapse;
     table-layout: fixed;
-}
-
-.pic-menu {
-    margin: auto;
-    vertical-align: center;
-    width: 80%;
-}
-
-.text-left {
-    text-align: left;
 }
 
 /*--------------------------------------------------------------
@@ -109,6 +109,7 @@ select #note-select {
     margin: auto;
     padding: 10px;
     width: 28%;
+    opacity: 0;
 }
 .gallery-img {
     max-width: 100%;
@@ -122,7 +123,7 @@ select #note-select {
     position: relative;
     top: -30px;
 }
-.hover:hover .img-title{
+.carousel-item:hover .hover {
     background-color: darkgrey;
     opacity: 1;
 }

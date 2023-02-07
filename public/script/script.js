@@ -30,7 +30,7 @@ $(function($) {
     //})
 
     $('#homePage').click(function() {
-        document.location.href = "../../pages/index.php";
+        document.location.href = "../../logiq.php";
     })
     $('#menusPage').click(function() {
         document.location.href = "../../pages/menus.php";

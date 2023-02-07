@@ -48,9 +48,17 @@ class PictureManager
             echo "Erreur de l'upload";
         }
     }
-    public function getUploadedFiles(){
+    public function getUploadedFiles()
+    {
         $dir = '../../public/src/img/uploads/';
-        $files = array_slice(scandir($dir), 2);
-        return $files;
+        return array_slice(scandir($dir), 2);
+    }
+    public function getFirstPic()
+    {
+        return $this->getUploadedFiles()[0];
+    }
+    public function getRestPic()
+    {
+        return array_slice($this->getUploadedFiles(), 1);
     }
 }

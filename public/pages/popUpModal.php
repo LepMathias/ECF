@@ -13,41 +13,11 @@
                     <th scope="col">Déj.</th>
                     <th scope="col">Dîner</th>
                     </thead>
-                    <tr>
-                        <th scope="row">Lundi</th>
-                        <td>Fermé</td>
-                        <td>Fermé</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Mardi</th>
-                        <td>Fermé</td>
-                        <td>Fermé</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Mercredi</th>
-                        <td>12h - 14h</td>
-                        <td>19h - 21h30</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Jeudi</th>
-                        <td>12h - 14h</td>
-                        <td>19h - 21h30</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Vendredi</th>
-                        <td>12h - 14h</td>
-                        <td>19h - 21h30</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Samedi</th>
-                        <td>12h - 14h</td>
-                        <td>19h - 21h30</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Dimanche</th>
-                        <td>12h - 14h</td>
-                        <td>19h - 21h30</td>
-                    </tr>
+                    <?php
+                    foreach ($schedules as $schedule) {
+                        include 'admin/includes/schedulesView.php';
+                    }
+                    ?>
                 </table>
             </div>
         </div>

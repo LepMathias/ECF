@@ -2,10 +2,11 @@
 
 class Menu
 {
- private int $id;
- public string $title;
- public string $description;
- public string $price;
+     private int $id;
+     public string $title;
+     public string $description;
+     public string $price;
+    public string $availability;
 
     public function getId(): int
     {
@@ -27,4 +28,8 @@ class Menu
         return $this->price;
     }
 
+    public function getAvailability(): string
+    {
+        return $this->availability;
+    }
 }

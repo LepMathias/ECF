@@ -22,7 +22,7 @@ nav, footer {
 }
 
 /*--------------------------------------------------------------
-# Form
+Formulaires
 --------------------------------------------------------------*/
 
 .form-label {
@@ -35,4 +35,25 @@ nav, footer {
     color: black;
     margin: 0.5vw;
     padding: 0.2vw;
+}
+
+/*--------------------------------------------------------------
+Schedules table
+--------------------------------------------------------------*/
+tbody td, thead th, h5 {
+    text-align: center;
+}
+
+td {
+    letter-spacing: 1px;
+    padding: 20px;
+}
+
+th {
+    letter-spacing: 2px;
+    padding: 20px;
+}
+
+tfoot th {
+    text-align: right;
 }

@@ -1,11 +1,14 @@
 <?php
 session_start();
-require '../../public/src/models/MealManager.php';
+
 require '../../public/src/models/MenuManager.php';
 
 $pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
-$mealManager = new MealManager($pdo);
 $menuManager = new MenuManager($pdo);
+
+if (!empty($_POST['category'])) {
+    $menuManager->addMenu($_POST['title'], $_POST['description'], $_POST['price'], $_POST['availability']);
+}
 
 if (isset($_GET['id'])) {
     $menuManager->deleteMenu($_GET['id']);
@@ -46,6 +49,9 @@ include '../includes/headerParam.php'
                         <div class="card-body">
                             <label class="form-label" for="description">Descriptif</label>
                             <textarea class="form-control" type="text" name="description" id="description"></textarea>
+
+                            <label class="form-label" for="availability">Disponibilité</label>
+                            <textarea class="form-control" type="text" name="availability" id="availability"></textarea>
                         </div>
                     </div>
                     <div class="col-3 justify-content-between">
@@ -69,11 +75,11 @@ include '../includes/headerParam.php'
     </div>
 </div>
 <div class="container-fluid" id="display-menus">
-        <?php
-        foreach ($menus as $menu) {
-            include '../includes/menusView.php';
-        }
-        ?>
+    <?php
+    foreach ($menus as $menu) {
+        include '../includes/menusView.php';
+    }
+    ?>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s

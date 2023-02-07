@@ -5,6 +5,7 @@
     </div>
     <div class="row">
         <p class="col"><?=$menu->getDescription()?></p>
+        <p class="col"><?=$menu->getAvailability()?></p>
         <a href="?id=<?=$menu->getId()?>" class="btn btn-danger">Supprimer</a>
     </div>
 </div>

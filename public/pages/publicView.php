@@ -69,7 +69,7 @@ $files = array_slice($pictureManager->getUploadedFiles(), 1);
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="0" class="active"></button>
             <?php
-            for ($i = 1; $i <= count($files); $i++) {
+            for ($i = 1; $i <count($files); $i++) {
                 include '../includes/buttonCarousel.php';
             }
             ?>

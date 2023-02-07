@@ -6,12 +6,13 @@ class MenuManager
     {
         $this->pdo = $pdo;
     }
-    public function addMenu($title, $description, $price)
+    public function addMenu(string $title, string $description, string $price, string $availability)
     {
         $statement = $this->pdo->prepare('INSERT INTO menus (
-                   title, description, price) 
-                   VALUES (:title, :description, :price)');
+                   title, availability, description, price) 
+                   VALUES (:title, :availability, :description, :price)');
         $statement->bindValue(':title', $title);
+        $statement->bindValue(':availability', $availability);
         $statement->bindValue(':description', $description);
         $statement->bindValue(':price', $price);
 

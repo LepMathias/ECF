@@ -1,5 +1,12 @@
 <?php
 session_start();
+require '../../public/src/models/SchedulesManager.php';
+
+$pdo = new PDO('mysql:host=127.0.0.1;dbname=restaurant', 'root', '');
+$schedulesManager = new SchedulesManager($pdo);
+
+$schedules = $schedulesManager->getSchedules();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -21,6 +28,20 @@ include '../includes/headerParam.php'
 ?>
 <body>
 
+<div class="container-fluid">
+    <table>
+        <thead>
+        <th scope="col" class="text-left">Jour</th>
+        <th scope="col">Déj.</th>
+        <th scope="col">Dîner</th>
+        </thead>
+        <?php
+        foreach ($schedules as $schedule) {
+            include '../includes/schedulesView.php';
+        }
+        ?>
+    </table>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s
     mXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

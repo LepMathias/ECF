@@ -64,7 +64,7 @@ try {
                                 id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
                                 name VARCHAR(20) NOT NULL);') !== false) {
 
-                                /*Alimentation de la categoriesMeal*/
+                                /*Alimentation de la categoriesMeal table*/
                                 $restoPdo->exec("INSERT INTO categoriesMeal (name) VALUES ('starter')");
                                 $restoPdo->exec("INSERT INTO categoriesMeal (name) VALUES ('main course')");
                                 $restoPdo->exec("INSERT INTO categoriesMeal (name) VALUES ('dessert')");
@@ -78,12 +78,42 @@ try {
                                 categoryId INT(1) NOT NULL,
                                 FOREIGN KEY (categoryId) REFERENCES categoriesMeal(id));') !== false) {
 
+                                    /*Création table Menu*/
                                     if ($restoPdo->exec('CREATE TABLE menus (
                                     id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
                                     title VARCHAR(50) NOT NULL,
+                                    availability VARCHAR(150) NOT NULL,
                                     description VARCHAR(250) NOT NULL,
                                     price CHAR(3) NOT NULL)') !== false) {
-                                        echo "Installation réussie";
+
+                                        /*Création table schedules*/
+                                        if($restoPdo->exec('CREATE TABLE schedules (
+                                            id INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                                            day VARCHAR(8) NOT NULL,
+                                            startDej CHAR(5),
+                                            endDej CHAR(5),
+                                            startDin CHAR(5),
+                                            endDin CHAR(5)
+                                            )') !== false) {
+                                            /*Alimentation de la schedules table*/
+                                            $pdo->exec("INSERT INTO schedules (day) 
+                                                                VALUES ('Lundi')");
+                                            $pdo->exec("INSERT INTO schedules (day) 
+                                                                VALUES ('Mardi')");
+                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                                                VALUES ('Mercredi', '12:00', '14:00', '19:00', '21:30')");
+                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                                                VALUES ('Jeudi', '12:00', '14:00', '19:00', '21:30')");
+                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                                                VALUES ('Vendredi', '12:00', '14:00', '19:00', '21:30')");
+                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                                                VALUES ('Samedi', '12:00', '14:00', '19:00', '21:30')");
+                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                                                VALUES ('Dimanche', '12:00', '14:00', '19:00', '21:30')");
+                                            echo "Installation réussie";
+                                        } else {
+                                            echo "Impossible de créer table 'schedules'";
+                                        }
                                     } else {
                                         echo "Impossible de créer la table menus";
                                     }

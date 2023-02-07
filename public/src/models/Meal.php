@@ -8,11 +8,6 @@ class Meal
     public string $price;
     public int $categoryId;
 
-    public function getCategoryId(): int
-    {
-        return $this->categoryId;
-    }
-
     public function getId(): int
     {
         return $this->id;
@@ -31,6 +26,11 @@ class Meal
     public function getPrice(): string
     {
         return $this->price;
+    }
+
+    public function getCategoryId(): int
+    {
+        return $this->categoryId;
     }
 
 }

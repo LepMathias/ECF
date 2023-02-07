@@ -20,3 +20,4 @@ SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in you
 SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
 SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
 SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected

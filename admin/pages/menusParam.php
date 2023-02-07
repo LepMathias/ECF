@@ -1,19 +1,17 @@
 <?php
 session_start();
 require '../../public/src/models/MealManager.php';
+require '../../public/src/models/MenuManager.php';
 
 $pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
 $mealManager = new MealManager($pdo);
+$menuManager = new MenuManager($pdo);
+
 if (isset($_GET['id'])) {
-    $mealManager->deleteMeal($_GET['id']);
+    $menuManager->deleteMenu($_GET['id']);
 }
-if (!empty($_POST['category']))
-    $mealManager->addMeal($_POST['category'], $_POST['title'], $_POST['description'], $_POST['price']);
 
-$starters = $mealManager->getMeals(1);
-$mains = $mealManager->getMeals(2);
-$desserts = $mealManager->getMeals(3);
-
+$menus = $menuManager->getMenus();
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -34,14 +32,14 @@ include '../../commonFiles/includes/header.php';
 include '../includes/headerParam.php'
 ?>
 <body>
-<div class="container-fluid" id="menus-menu">
+<div class="container-fluid" id="form-menus">
     <div class="row">
-        <div class="col-4">
-            <div class="card" id="menu-item">
+        <div class="col">
+            <div class="card">
                 <form class="row" method="post" action="#">
                     <div class="col-9 card-header">
                         <div class="card-title">
-                            <h3>Entrées</h3>
+                            <h3>Menus</h3>
                             <label class="form-label" for="title"><h5>Titre</h5></label>
                             <input class="form-control" type="text" name="title" id="title">
                         </div>
@@ -55,7 +53,7 @@ include '../includes/headerParam.php'
                             <div class="row">
                                 <label class="form-label" for="price"><h5>Prix €</h5></label>
                                 <input class="form-control d-inline-block" type="text" name="price" id="price">
-                                <input class="form-control" type="hidden" name="category" value="1">
+                                <input class="form-control" type="hidden" name="category" value="menu">
                             </div>
                             <div class="row mt-5">
                                 <button class="btn btn-success" type="submit" id="addMeal">
@@ -68,96 +66,14 @@ include '../includes/headerParam.php'
                 </form>
             </div>
         </div>
-        <div class="col-4">
-            <div class="card" id="menu-item">
-                <form class="row" method="post" action="#">
-                    <div class="col-9 card-header">
-                        <div class="card-title">
-                            <h3>Plats</h3>
-                            <label class="form-label" for="title"><h5>Titre</h5></label>
-                            <input class="form-control" type="text" name="title" id="title">
-                            <input class="form-control" type="hidden" name="category" value="2">
-                        </div>
-                        <div class="card-body">
-                            <label class="form-label" for="description">Descriptif</label>
-                            <textarea class="form-control" type="text" name="description" id="description"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-3 justify-content-between">
-                        <div class="card-footer">
-                            <div class="row">
-                                <label class="form-label" for="price"><h5>Prix €</h5></label>
-                                <input class="form-control d-inline-block" type="text" name="price" id="price">
-                            </div>
-                            <div class="row mt-5">
-                                <button class="btn btn-success" id="addMeal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                    </svg>Ajouter</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card" id="menu-item">
-                <form class="row" method="post" action="#">
-                    <div class="col-9 card-header">
-                        <div class="card-title">
-                            <h3>Desserts</h3>
-                            <label class="form-label" for="title"><h5>Titre</h5></label>
-                            <input class="form-control" type="text" name="title" id="title">
-                            <input class="form-control" type="hidden" name="category" value="3">
-                        </div>
-                        <div class="card-body">
-                            <label class="form-label" for="description">Descriptif</label>
-                            <textarea class="form-control" type="text" name="description" id="description"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-3 justify-content-between">
-                        <div class="card-footer">
-                            <div class="row">
-                                <label class="form-label" for="price"><h5>Prix €</h5></label>
-                                <input class="form-control d-inline-block" type="text" name="price" id="price">
-                            </div>
-                            <div class="row mt-5">
-                                <button class="btn btn-success" id="addMeal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                    </svg>Ajouter</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 </div>
 <div class="container-fluid" id="display-menus">
-    <div class="row">
-        <div class="col-4">
-            <?php
-            foreach ($starters as $starter){
-                include '../includes/startersView.php';
-            }
-            ?>
-        </div>
-        <div class="col-4">
-            <?php
-            foreach ($mains as $main){
-                include '../includes/mainCourseView.php';
-            }
-            ?>
-        </div>
-        <div class="col-4">
-            <?php
-            foreach ($desserts as $dessert){
-                include '../includes/dessertsView.php';
-            }
-            ?>
-        </div>
-    </div>
+        <?php
+        foreach ($menus as $menu) {
+            include '../includes/menusView.php';
+        }
+        ?>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s
@@ -165,22 +81,9 @@ include '../includes/headerParam.php'
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
 <script>
     $(function ($){
-        let gallery_btn = document.getElementById('gallery-btn')
-        let gallery_menu = document.getElementById('gallery-menu');
-        let menus_btn = document.getElementById('menus-btn');
-        let menus_menu = document.getElementById('menus-menu');
-
-        gallery_btn.addEventListener("click", () => {
-            gallery_menu.style.display = "flex";
-            menus_menu.style.display = "none";
-        })
-        menus_btn.addEventListener("click", () => {
-            menus_menu.style.display = "flex";
-            gallery_menu.style.display = "none";
-        })
-
 
     })
 </script>

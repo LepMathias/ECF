@@ -1,17 +1,11 @@
 <?php
 
-class Meal
+class Menu
 {
-    public int $id;
-    public string $title;
-    public string $description;
-    public string $price;
-    public int $categoryId;
-
-    public function getCategoryId(): int
-    {
-        return $this->categoryId;
-    }
+ private int $id;
+ public string $title;
+ public string $description;
+ public string $price;
 
     public function getId(): int
     {

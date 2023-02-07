@@ -50,7 +50,7 @@ class PictureManager
     }
     public function getUploadedFiles(){
         $dir = '../../public/src/img/uploads/';
-        $files = scandir($dir);
+        $files = array_slice(scandir($dir), 2);
         return $files;
     }
 }

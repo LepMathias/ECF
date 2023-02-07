@@ -30,10 +30,10 @@ $(function($) {
     //})
 
     $('#homePage').click(function() {
-        document.location.href = "../pages/index.php";
+        document.location.href = "../../pages/index.php";
     })
     $('#menusPage').click(function() {
-        document.location.href = "../pages/menus.php";
+        document.location.href = "../../pages/menus.php";
     })
 
 });

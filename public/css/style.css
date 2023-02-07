@@ -80,7 +80,7 @@ tfoot th {
 # Form
 --------------------------------------------------------------*/
 form {
-    font-family: "DejaVu Serif";
+    font-family: "DejaVu Serif", serif;
 }
 
 label {

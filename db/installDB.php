@@ -77,9 +77,18 @@ try {
                                 price CHAR(3) NOT NULL,
                                 categoryId INT(1) NOT NULL,
                                 FOREIGN KEY (categoryId) REFERENCES categoriesMeal(id));') !== false) {
-                                    echo "Installation réussie";
+
+                                    if ($restoPdo->exec('CREATE TABLE menus (
+                                    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                                    title VARCHAR(50) NOT NULL,
+                                    description VARCHAR(250) NOT NULL,
+                                    price CHAR(3) NOT NULL)') !== false) {
+                                        echo "Installation réussie";
+                                    } else {
+                                        echo "Impossible de créer la table menus";
+                                    }
                                 } else {
-                                    echo "Impossible de créer la table Meal";
+                                    echo "Impossible de créer la table meals";
                                 }
                             } else {
                                 echo "Impossible de créer la table categorieMeal";

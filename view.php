@@ -1,5 +1,11 @@
 <?php
 session_start();
+/*
+require 'public/src/models/PictureManager.php';
+$pictureManager = new PictureManager();
+$firstPic = $pictureManager->getUploadedFiles()[0];
+$files = array_slice($pictureManager->getUploadedFiles(), 1);
+*/
 ?>
 <!DOCTYPE html>
     <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -63,36 +69,21 @@ session_start();
             <!-- Les indicateurs-->
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="2"></button>
+
+                <?php
+                /*for ($i = 1; $i <= count($files); $i++) {
+                    include 'public/includes/buttonCarousel.php';
+                }*/
+                ?>
             </div>
             <!-- Le carousel -->
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="d-flex justify-content-center">
-                        <img class="img-fluid d-block h-25" src="public/src/img/gallery/plat-2.webp" alt="Premier slide">
-                        <div class="carousel-caption">
-                            <h5>Fleur Tulips</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex justify-content-center">
-                        <img class="img-fluid d-block h-25" src="public/src/img/gallery/plat-3.jpg" alt="Second slide">
-                        <div class="carousel-caption">
-                            <h5>Fleur Rose</h5>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex justify-content-center">
-                        <img class="img-fluid d-block h-25" src="public/src/img/gallery/plat-4.jpg" alt="Troisième slide">
-                        <div class="carousel-caption">
-                            <h5>Fleur Marguerite</h5>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                /*include 'public/includes/firstDisplayCarousel.php';
+                foreach ($files as $file){
+                    include 'public/includes/displayCarousel.php';
+                }*/
+                ?>
             </div>
             <!-- Les commandes de contrôle-->
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
@@ -142,7 +133,7 @@ session_start();
     include_once 'commonFiles/includes/footer.php';
     include_once 'public/pages/popUpModal.php';
     ?>
-
+    </body>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s
     mXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -101,6 +101,8 @@
                                 <option value="12:30">12:30</option>
                                 <option value="12:45">12:45</option>
                                 <option value="13:00">13:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
                             </select>
                         </div>
                     </div>

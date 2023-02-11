@@ -43,7 +43,7 @@ if (!empty($_POST['sign-up_form'])) {
 
 if (!empty($_POST['reservation_form'])) {
     if (isset($_SESSION['id'])) {
-        $reservationManager->addReservationUId($_POST['date'], $_POST['hour'], $_POST['nbrOfGuest'], $_SESSION['id']);
+        $reservationManager->addReservationUId($_POST['date'], $_POST['hour'], $_POST['nbrOfGuest'], $_SESSION['id'], $_POST['allergies']);
     } else {
         $reservationManager->addReservation($_POST['date'], $_POST['hour'], $_POST['nbrOfGuest'], $_POST['lastname'], $_POST['firstname'], $_POST['phoneNumber'], $_POST['allergies']);
     }

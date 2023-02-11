@@ -25,7 +25,7 @@ try {
                     email VARCHAR(254) NOT NULL,
                     phoneNumber VARCHAR(20) NOT NULL,
                     password CHAR(60) NOT NULL,
-                    defaultNbrGuest INT(2) NOT NULL,
+                    defaultNbrGuest (2),
                     allergies VARCHAR(150),
                     isAdmin INT(1) DEFAULT 0
                     )') !== false){
@@ -96,19 +96,19 @@ try {
                                             endDin CHAR(5)
                                             )') !== false) {
                                             /*Alimentation de la schedules table*/
-                                            $pdo->exec("INSERT INTO schedules (day) 
+                                            $restoPdo->exec("INSERT INTO schedules (day) 
                                                                 VALUES ('Lundi')");
-                                            $pdo->exec("INSERT INTO schedules (day) 
+                                            $restoPdo->exec("INSERT INTO schedules (day) 
                                                                 VALUES ('Mardi')");
-                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                            $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
                                                                 VALUES ('Mercredi', '12:00', '14:00', '19:00', '21:30')");
-                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                            $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
                                                                 VALUES ('Jeudi', '12:00', '14:00', '19:00', '21:30')");
-                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                            $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
                                                                 VALUES ('Vendredi', '12:00', '14:00', '19:00', '21:30')");
-                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                            $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
                                                                 VALUES ('Samedi', '12:00', '14:00', '19:00', '21:30')");
-                                            $pdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                            $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
                                                                 VALUES ('Dimanche', '12:00', '14:00', '19:00', '21:30')");
                                             echo "Installation réussie";
                                         } else {

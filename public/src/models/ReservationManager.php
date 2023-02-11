@@ -6,15 +6,16 @@ class ReservationManager
     {
         $this->pdo = $pdo;
     }
-    public function addReservationUId(string $date, string $hour, string $nbrOfGuest, string $userId)
+    public function addReservationUId(string $date, string $hour, string $nbrOfGuest, string $userId, string $allergies)
     {
         $statement = $this->pdo->prepare('INSERT INTO reservations 
-                    (date, hour, nbrOfGuest, userId)
-                    VALUES (:date, :hour, :nbrOfGuest, :userId)');
+                    (date, hour, nbrOfGuest, userId, allergies)
+                    VALUES (:date, :hour, :nbrOfGuest, :userId, :allergies)');
         $statement->bindValue(':date', $date);
         $statement->bindValue(':hour', $hour);
         $statement->bindValue(':nbrOfGuest', $nbrOfGuest);
         $statement->bindValue(':userId', $userId);
+        $statement->bindValue(':allergies', $allergies);
 
         $statement->execute();
     }

@@ -90,27 +90,35 @@ try {
                                         if($restoPdo->exec('CREATE TABLE schedules (
                                             id INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
                                             day VARCHAR(8) NOT NULL,
-                                            startDej TIME(7),
-                                            endDej TIME(7),
-                                            startDin TIME(7),
-                                            endDin TIME(7)
+                                            startDej CHAR(7),
+                                            endDej CHAR(7),
+                                            startDin CHAR(7),
+                                            endDin CHAR(7)
                                             )') !== false) {
                                             /*Alimentation de la schedules table*/
-                                            $restoPdo->exec("INSERT INTO schedules (day) 
-                                                                VALUES ('Lundi')");
-                                            $restoPdo->exec("INSERT INTO schedules (day) 
-                                                                VALUES ('Mardi')");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Mercredi', 12:00, 14:00, 19:00, 21:30)");
+                                                                VALUES ('Lundi', '', '', '', '')");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Jeudi', 12:00, 14:00, 19:00, 21:30)");
+                                                                VALUES ('Mardi', '', '', '', '')");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Vendredi', 12:00, 14:00, 19:00, 21:30)");
+                                                                VALUES ('Mercredi', '12:00', '14:00', '19:00', '21:30')");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Samedi', 12:00, 14:00, 19:00, 21:30)");
+                                                                VALUES ('Jeudi', '12:00', '14:00', '19:00', '21:30')");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Dimanche', 12:00, 14:00, 19:00, 21:30)");
-                                            echo "Installation réussie";
+                                                                VALUES ('Vendredi', '12:00', '14:00', '19:00', '21:30')");
+                                            $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                                                VALUES ('Samedi', '12:00', '14:00', '19:00', '21:30')");
+                                            $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
+                                                                VALUES ('Dimanche', '12:00', '14:00', '19:00', '21:30')");
+                                            if($restoPdo->prepare('CREATE TABLE settings (
+                                                id INT(11) NOT NULL AUTO_INCREMENT,
+                                                name VARCHAR(50) NOT NULL,
+                                                value VARCHAR(50)
+                                            )') !== false){
+                                                echo "Installation réussie";
+                                            } else {
+                                                echo "Impossible de créer tabl 'settings";
+                                            }
                                         } else {
                                             echo "Impossible de créer table 'schedules'";
                                         }

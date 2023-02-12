@@ -26,7 +26,7 @@ class SchedulesManager
         $statement->bindValue(':startDin', $startDin);
         $statement->bindValue(':endDin', $endDin);
         $statement->bindValue(':id', $id);
-        echo "exe Ok";
+
         $statement->execute();
 
     }

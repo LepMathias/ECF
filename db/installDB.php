@@ -25,7 +25,7 @@ try {
                     email VARCHAR(254) NOT NULL,
                     phoneNumber VARCHAR(20) NOT NULL,
                     password CHAR(60) NOT NULL,
-                    defaultNbrGuest (2),
+                    defaultNbrGuest VARCHAR(2),
                     allergies VARCHAR(150),
                     isAdmin INT(1) DEFAULT 0
                     )') !== false){
@@ -90,10 +90,10 @@ try {
                                         if($restoPdo->exec('CREATE TABLE schedules (
                                             id INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
                                             day VARCHAR(8) NOT NULL,
-                                            startDej CHAR(5),
-                                            endDej CHAR(5),
-                                            startDin CHAR(5),
-                                            endDin CHAR(5)
+                                            startDej TIME(7),
+                                            endDej TIME(7),
+                                            startDin TIME(7),
+                                            endDin TIME(7)
                                             )') !== false) {
                                             /*Alimentation de la schedules table*/
                                             $restoPdo->exec("INSERT INTO schedules (day) 
@@ -101,15 +101,15 @@ try {
                                             $restoPdo->exec("INSERT INTO schedules (day) 
                                                                 VALUES ('Mardi')");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Mercredi', '12:00', '14:00', '19:00', '21:30')");
+                                                                VALUES ('Mercredi', 12:00, 14:00, 19:00, 21:30)");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Jeudi', '12:00', '14:00', '19:00', '21:30')");
+                                                                VALUES ('Jeudi', 12:00, 14:00, 19:00, 21:30)");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Vendredi', '12:00', '14:00', '19:00', '21:30')");
+                                                                VALUES ('Vendredi', 12:00, 14:00, 19:00, 21:30)");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Samedi', '12:00', '14:00', '19:00', '21:30')");
+                                                                VALUES ('Samedi', 12:00, 14:00, 19:00, 21:30)");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                                                                VALUES ('Dimanche', '12:00', '14:00', '19:00', '21:30')");
+                                                                VALUES ('Dimanche', 12:00, 14:00, 19:00, 21:30)");
                                             echo "Installation réussie";
                                         } else {
                                             echo "Impossible de créer table 'schedules'";

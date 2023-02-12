@@ -60,7 +60,7 @@ include '../includes/headerParam.php'
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-    function showReservations(date) {
+    function showReservations(date, hour) {
         fetch("../../db/getReservations.php?q=" + date)
             .then(async function (response) {
                 document.getElementById("displayReservations").innerHTML = await response.text();

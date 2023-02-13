@@ -91,18 +91,11 @@
                     <div class="row">
                         <div class="col">
                             <label for="date" class="form-label">Date</label>
-                            <input type="date" name="date" id="date" class="form-control">
+                            <input type="date" name="date" id="date" class="form-control" onchange="getAvailability(this.value)">
                         </div>
                         <div class="col">
                             <label for="hour" class="form-label">Heure</label>
                             <select name="hour" class="form-select" id="hour-select">
-                                <option value="12:00">12:00</option>
-                                <option value="12:15">12:15</option>
-                                <option value="12:30">12:30</option>
-                                <option value="12:45">12:45</option>
-                                <option value="13:00">13:00</option>
-                                <option value="19:00">19:00</option>
-                                <option value="20:00">20:00</option>
                             </select>
                         </div>
                     </div>

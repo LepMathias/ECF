@@ -158,6 +158,12 @@ include 'logiq.php';
                 $('#sign-up-modal').modal('show');
             })
         });
+        function getAvailability(date){
+            fetch("db/getAvailability.php?q=" + date)
+                .then(async function (response) {
+                    document.getElementById("hour-select").innerHTML = await response.text();
+                })
+        }
     </script>
     </body>
 

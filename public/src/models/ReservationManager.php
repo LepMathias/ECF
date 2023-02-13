@@ -34,4 +34,29 @@ class ReservationManager
 
         $statement->execute();
     }
+    public function getCountLunch(string $date, string $startDej, string $endDej)
+    {
+        $statement = $this->pdo->prepare("SELECT 
+                                    SUM(DISTINCT nbrOfGuest)
+                                    FROM reservations 
+                                    WHERE date = :d
+                                    AND hour BETWEEN :a AND :b");
+        $statement->bindValue(':d', $date);
+        $statement->bindValue(':a', $startDej);
+        $statement->bindValue(':b', $endDej);
+
+        return $statement->fetch();
+    }
+    public function getCountDiner(string $date, string $startDin, string $endDin)
+    {
+        $statement = $this->pdo->prepare("SELECT SUM(DISTINCT nbrOfGuest)
+                                    FROM reservations 
+                                    WHERE date = :d 
+                                    AND hour BETWEEN :a AND :b");
+        $statement->bindValue(':d', $date);
+        $statement->bindValue(':a', $startDin);
+        $statement->bindValue(':b', $endDin);
+
+        return $statement->fetch();
+    }
 }

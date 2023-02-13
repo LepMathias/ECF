@@ -111,10 +111,11 @@ try {
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
                                                                 VALUES ('Dimanche', '12:00', '14:00', '19:00', '21:30')");
                                             if($restoPdo->prepare('CREATE TABLE settings (
-                                                id INT(11) NOT NULL AUTO_INCREMENT,
+                                                id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
                                                 name VARCHAR(50) NOT NULL,
-                                                value VARCHAR(50)
+                                                content VARCHAR(50)
                                             )') !== false){
+                                                $restoPdo->exec("INSERT INTO settings (name, content) VALUES ('maxOfGuest', '40')");
                                                 echo "Installation réussie";
                                             } else {
                                                 echo "Impossible de créer tabl 'settings";

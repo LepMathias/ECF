@@ -1,5 +1,13 @@
 <?php
 session_start();
+require '../../public/src/models/SettingManager.php';
+$pdo = new PDO('mysql:host=127.0.0.1;dbname=restaurant', 'root', '');
+
+$settingManager = new SettingManager($pdo);
+if(!empty($_POST['id'])){
+    $settingManager->updateSetting($_POST['maxOfGuest'], $_POST['id']);
+}
+$maxOfGuest = $settingManager->getSettings('maxOfGuest');
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -41,9 +49,10 @@ include '../includes/headerParam.php'
             </div>
         </div>
         <div class="col-2">
-            <form name="maxOfGuest">
+            <form name="maxOfGuest" method="post" action="#">
                 <label for="maxOfGuest" class="form-label">Nombre de personne max par service</label>
-                <input type="number" name="maxOfGuest" id="maxOfGuest" value="" class="form-control">
+                <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->getContent()?>">
+                <input type="hidden" name="id" id="id" value="<?=$maxOfGuest->getId()?>">
                 <button type="submit" class="btn btn-success mt-1">Submit</button>
             </form>
         </div>
@@ -60,7 +69,7 @@ include '../includes/headerParam.php'
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-    function showReservations(date, hour) {
+    function showReservations(date) {
         fetch("../../db/getReservations.php?q=" + date)
             .then(async function (response) {
                 document.getElementById("displayReservations").innerHTML = await response.text();

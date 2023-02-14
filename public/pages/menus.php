@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../includes/logic.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -21,12 +22,55 @@ session_start();
     ?>
 </header>
 <body>
-
-
+<div class="container" id="carte">
+    <div class="row text-center head-menus" id="head-menus">
+        <h3>Notre carte</h3>
+    </div>
+    <div class="row text-center justify-content-between">
+        <div class="col-md-3">
+            <h5 class="subTitle">Entrées</h5>
+            <?php
+            foreach ($starters as $meal){
+                include '../includes/mealView.php';
+            }
+            ?>
+        </div>
+        <div class="col-md-3">
+            <h5 class="subTitle">Plats</h5>
+            <?php
+            foreach ($mainCourses as $meal){
+                include '../includes/mealView.php';
+            }
+            ?>
+        </div>
+        <div class="col-md-3">
+            <h5 class="subTitle">Desserts</h5>
+            <?php
+            foreach ($desserts as $meal){
+                include '../includes/mealView.php';
+            }
+            ?>
+        </div>
+    </div>
+</div>
+<div class="container" id="menus">
+    <div class="row text-center head-menus" id="head-menus">
+        <h3>Nos menus</h3>
+    </div>
+    <div class="row text-center">
+        <div class="col">
+            <?php
+            foreach ($menus as $menu){
+                include '../includes/menuView.php';
+            }
+            ?>
+        </div>
+    </div>
+</div>
 
 <?php
 include_once("../../commonFiles/includes/footer.php");
-include_once("popUpModal.php");
+include_once("../includes/popUpModal.php");
 ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s
@@ -34,36 +78,7 @@ include_once("popUpModal.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <script>
-        $(function($) {
-            <!-- EventListener pop-up modal -->
-            $('#horaires-img').click(function() {
-                $('#horaires-modal').modal('show');
-                })
-            $('#allergenes_img').click(function() {
-                $('#allergenes-modal').modal('show');
-                })
-            $('#galery_img').click(function() {
-                $('#gallery-modal').modal('show');
-                })
-            $('#feedback').click(function() {
-                $('#feedback-modal').modal('show');
-                })
-            $('#reservation').click(function() {
-                $('#reservation-modal').modal('show');
-                })
-            $('#log-in').click(function() {
-                $('#log-in-modal').modal('show');
-                })
-            $('#sign-up').click(function() {
-                $('#sign-up-modal').modal('show');
-            })
-
-            $('#log-out').click(function() {
-                $('location').attr('href', 'logout.php');
-                })
-        });
-    </script>
+    <script src="../script/script.js"></script>
 </body>
 
 </html>

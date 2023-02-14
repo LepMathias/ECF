@@ -40,7 +40,7 @@ tfoot th {
 }
 
 /*--------------------------------------------------------------
-Main pages Images
+Main pages Images on menu
 --------------------------------------------------------------*/
 .btn-menu {
     align-items: center;
@@ -126,4 +126,30 @@ select #note-select {
 .carousel-item:hover .hover {
     background-color: darkgrey;
     opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# MenusPage
+--------------------------------------------------------------*/
+.menus {
+    border-bottom: #A4A4A4 dotted 1px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+.subTitle {
+    border-bottom: #818080 double 4px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+.head-menus {
+    border-bottom: #818080 solid 4px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+.content {
+    color: #818080;
+}
+#menus {
+    margin-top: 80px;
 }

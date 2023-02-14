@@ -24,16 +24,10 @@ $(function($) {
     $('#sign-up').click(function() {
         $('#sign-up-modal').modal('show');
     })
-
-    //$('.gallery').mouseover(function (){
-    //    $('.img-title').css('display','block');
-    //})
-
-    $('#homePage').click(function() {
-        document.location.href = "../../logiq.php";
-    })
-    $('#menusPage').click(function() {
-        document.location.href = "../../pages/menus.php";
-    })
-
 });
+function getAvailability(date){
+    fetch("db/getAvailability.php?q=" + date)
+        .then(async function (response) {
+            document.getElementById("hour-select").innerHTML = await response.text();
+        })
+}

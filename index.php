@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'logiq.php';
+include 'logic.php';
 
 ?>
 <!DOCTYPE html>
@@ -133,38 +133,7 @@ include 'logiq.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <script>
-        $(function($) {
-            <!-- EventListener pop-up modal -->
-            $('#horaires-img').click(function() {
-                $('#horaires-modal').modal('show');
-            })
-            $('#allergenes_img').click(function() {
-                $('#allergenes-modal').modal('show');
-            })
-            $('#galery_img').click(function() {
-                $('#gallery-modal').modal('show');
-            })
-            $('#feedback').click(function() {
-                $('#feedback-modal').modal('show');
-            })
-            $('#reservation').click(function() {
-                $('#reservation-modal').modal('show');
-            })
-            $('#log-in').click(function() {
-                $('#log-in-modal').modal('show');
-            })
-            $('#sign-up').click(function() {
-                $('#sign-up-modal').modal('show');
-            })
-        });
-        function getAvailability(date){
-            fetch("db/getAvailability.php?q=" + date)
-                .then(async function (response) {
-                    document.getElementById("hour-select").innerHTML = await response.text();
-                })
-        }
-    </script>
+    <script src="public/script/script.js"></script>
     </body>
 
     </html>

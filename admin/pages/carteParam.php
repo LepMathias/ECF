@@ -1,21 +1,6 @@
 <?php
 session_start();
-require '../../public/src/models/MealManager.php';
-require '../../public/src/models/MenuManager.php';
-
-$pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
-$mealManager = new MealManager($pdo);
-
-if (isset($_GET['id'])) {
-    $mealManager->deleteMeal($_GET['id']);
-}
-if (!empty($_POST['category'])){
-    $mealManager->addMeal($_POST['category'], $_POST['title'], $_POST['description'], $_POST['price']);
-}
-
-$starters = $mealManager->getMeals(1);
-$mains = $mealManager->getMeals(2);
-$desserts = $mealManager->getMeals(3);
+include '../includes/logicAdmin.php'
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -168,10 +153,5 @@ include '../includes/headerParam.php'
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-
-<script>
-    $(function ($){
-
-    })
-</script>
 </body>
+</html>

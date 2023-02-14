@@ -1,16 +1,6 @@
 <?php
 session_start();
-require '../../public/src/models/SchedulesManager.php';
-
-$pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
-$schedulesManager = new SchedulesManager($pdo);
-
-$schedules = $schedulesManager->getSchedules();
-
-if (!empty($_POST['id'])) {
-    $schedulesManager->updateSchedules($_POST['startDej'], $_POST['endDej'], $_POST['startDin'], $_POST['endDin'], $_POST['id']);
-}
-
+include '../includes/logicAdmin.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -53,3 +43,4 @@ include '../includes/headerParam.php'
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+</html>

@@ -1,20 +1,6 @@
 <?php
 session_start();
-
-require '../../public/src/models/MenuManager.php';
-
-$pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
-$menuManager = new MenuManager($pdo);
-
-if (!empty($_POST['category'])) {
-    $menuManager->addMenu($_POST['title'], $_POST['description'], $_POST['price'], $_POST['availability']);
-}
-
-if (isset($_GET['id'])) {
-    $menuManager->deleteMenu($_GET['id']);
-}
-
-$menus = $menuManager->getMenus();
+include '../includes/logicAdmin.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -59,7 +45,7 @@ include '../includes/headerParam.php'
                             <div class="row">
                                 <label class="form-label" for="price"><h5>Prix €</h5></label>
                                 <input class="form-control d-inline-block" type="text" name="price" id="price">
-                                <input class="form-control" type="hidden" name="category" value="menu">
+                                <input class="form-control" type="hidden" name="menu" value="menu">
                             </div>
                             <div class="row mt-5">
                                 <button class="btn btn-success" type="submit" id="addMeal">

@@ -1,25 +1,6 @@
 <?php
 session_start();
-require '../../public/src/models/PictureManager.php';
-require '../../public/src/models/MealManager.php';
-
-$pdo = new PDO('mysql:host=localhost;dbname=restaurant', 'root', '');
-
-$mealManager = new MealManager($pdo);
-if (!empty($_POST['category'])) {
-    $mealManager->addMeal($_POST['category'], $_POST['title'], $_POST['description'], $_POST['price']);
-}
-
-$pictureManager = new PictureManager();
-if (!empty($_FILES['uploadedFile'])) {
-    $pictureManager->isUploadSuccessful($_FILES['uploadedFile']);
-}
-
-if (!empty($_POST['file'])) {
-    $pictureManager->deleteFile($_POST['file']);
-}
-
-$files = $pictureManager->getUploadedFiles();
+include '../includes/logicAdmin.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -52,7 +33,7 @@ include '../includes/headerParam.php'
                     <input class="form-control" type="text" id="title" name="pictureTitle">
 
                     <input name="upload-picture" value="pictureUploaded" type="hidden"/>
-                    <button type="submit" class="btn btn-menu">Submit</button>
+                    <button type="submit" class="btn btn-menu btn-success mt-4">Submit</button>
                 </form>
             </div>
             <div class="col-md-10">
@@ -73,7 +54,5 @@ include '../includes/headerParam.php'
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-<script>
-
-</script>
 </body>
+</html>

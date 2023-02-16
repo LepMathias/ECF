@@ -5,9 +5,9 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     /* Install DataBase Restaurant*/
-    if ($pdo->exec('DROP DATABASE IF EXISTS restaurant') !== false) {
-        if ($pdo->exec('CREATE DATABASE restaurant') !== false) {
-            $restoPdo = new PDO('mysql:host=127.0.0.1;dbname=restaurant', 'root', '');
+    if ($pdo->exec('DROP DATABASE IF EXISTS restaurant2') !== false) {
+        if ($pdo->exec('CREATE DATABASE restaurant2') !== false) {
+            $restoPdo = new PDO('mysql:host=127.0.0.1;dbname=restaurant2', 'root', '');
 
             /*Création table "posts"*/
             if ($restoPdo->exec('CREATE TABLE posts (
@@ -110,12 +110,14 @@ try {
                                                                 VALUES ('Samedi', '12:00', '14:00', '19:00', '21:30')");
                                             $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
                                                                 VALUES ('Dimanche', '12:00', '14:00', '19:00', '21:30')");
-                                            if($restoPdo->prepare('CREATE TABLE settings (
+                                            if($restoPdo->exec('CREATE TABLE settings (
                                                 id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
                                                 name VARCHAR(50) NOT NULL,
-                                                content VARCHAR(50)
+                                                content VARCHAR(250)
                                             )') !== false){
-                                                $restoPdo->exec("INSERT INTO settings (name, content) VALUES ('maxOfGuest', '40')");
+                                                $restoPdo->exec("INSERT INTO settings (name, content) 
+                                                                                VALUES ('maxOfGuest', '40'),
+                                                                                 ('schedulesFooter', 'du mercredi au dimanche de 12h00 à 14h00 et de 19h00 à 21h30')");
                                                 echo "Installation réussie";
                                             } else {
                                                 echo "Impossible de créer tabl 'settings";

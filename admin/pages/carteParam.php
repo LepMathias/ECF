@@ -23,7 +23,7 @@ include '../includes/headerParam.php'
 <body>
 <div class="container-fluid" id="form-carte">
     <div class="row">
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card" id="menu-item">
                 <form class="row" method="post" action="#">
                     <div class="col-9 card-header">
@@ -55,7 +55,7 @@ include '../includes/headerParam.php'
                 </form>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card" id="menu-item">
                 <form class="row" method="post" action="#">
                     <div class="col-9 card-header">
@@ -87,7 +87,7 @@ include '../includes/headerParam.php'
                 </form>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card" id="menu-item">
                 <form class="row" method="post" action="#">
                     <div class="col-9 card-header">
@@ -123,21 +123,21 @@ include '../includes/headerParam.php'
 </div>
 <div class="container-fluid" id="display-carte">
     <div class="row">
-        <div class="col-4">
+        <div class="col-md-4">
             <?php
             foreach ($starters as $starter){
                 include '../includes/startersView.php';
             }
             ?>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <?php
             foreach ($mains as $main){
                 include '../includes/mainCourseView.php';
             }
             ?>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <?php
             foreach ($desserts as $dessert){
                 include '../includes/dessertsView.php';

@@ -23,7 +23,7 @@ include '../includes/headerParam.php'
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-2">
+        <div class="col-md-2">
             <form name="reservationsCheck" method="post" action="">
                 <label for="date" class="form-label">Date</label>
                 <input type="date" name="date" id="date" class="form-control" onchange="showReservations(this.value)">
@@ -36,12 +36,12 @@ include '../includes/headerParam.php'
                 </select>
             </form>
         </div>
-        <div class="col-8">
+        <div class="col-md-8">
             <div class="row" id="displayReservations">
 
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-md-2">
             <form name="maxOfGuest" method="post" action="#">
                 <label for="maxOfGuest" class="form-label">Nombre de personne max par service</label>
                 <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->getContent()?>">

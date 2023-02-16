@@ -46,6 +46,5 @@ class UserManager
                 }
             }
         }
-        throw new Exception('Identifiants invalides');
     }
 }

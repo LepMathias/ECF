@@ -42,34 +42,29 @@ class SchedulesManager
     }
     public function getAvailableHours(string $day, $nbrOnLunch, $nbrOnDiner, $maxOfGuest): array
     {
+        $availableHours = [];
         $schedule = $this->getSchedulesDay($day);
-        if($schedule->startDej != '') {
-            if($nbrOnLunch < $maxOfGuest){
-                $availableLunchHours = [];
-                $countLunch = strtotime($schedule->startDej);
-                $countEndLunch = strtotime($schedule->endDej) - 3600;
+        if($schedule->startDej != '' && $nbrOnLunch < $maxOfGuest) {
+            $availableLunchHours = [];
+            $countLunch = strtotime($schedule->startDej);
+            $countEndLunch = strtotime($schedule->endDej) - 3600;
+            $availableLunchHours[] = $schedule->startDej;
+            while ($countLunch < $countEndLunch) {
+                $countLunch += 900;
                 $availableLunchHours[] = date('H:i', $countLunch);
-                while ($countLunch < $countEndLunch) {
-                    $add15Min = $countLunch + 900;
-                    $availableLunchHours[] = date('H:i', $add15Min);
-                    $countLunch = $add15Min;
-                }
-                $availableHours['lunch'] = $availableLunchHours;
             }
+            $availableHours['lunch'] = $availableLunchHours;
         }
-        if($schedule->startDin != '') {
-            if($nbrOnDiner < $maxOfGuest){
-                $availableDinerHours = [];
-                $countDiner = strtotime($schedule->startDin);
-                $countEndDiner = strtotime($schedule->endDin) - 3600;
+        if($schedule->startDin != '' && $nbrOnDiner < $maxOfGuest) {
+            $availableDinerHours = [];
+            $countDiner = strtotime($schedule->startDin);
+            $countEndDiner = strtotime($schedule->endDin) - 3600;
+            $availableDinerHours[] = $schedule->startDin;
+            while ($countDiner < $countEndDiner) {
+                $countDiner += 900 ;
                 $availableDinerHours[] = date('H:i', $countDiner);
-                while ($countDiner < $countEndDiner) {
-                    $add15Min = $countDiner + 900;
-                    $availableDinerHours[] = date('H:i', $add15Min);
-                    $countDiner = $add15Min;
-                }
-                $availableHours['diner'] = $availableDinerHours;
             }
+            $availableHours['diner'] = $availableDinerHours;
         }
         return $availableHours;
     }

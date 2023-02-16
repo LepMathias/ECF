@@ -91,30 +91,30 @@
                     <div class="row">
                         <div class="col">
                             <label for="date" class="form-label">Date</label>
-                            <input type="date" name="date" id="date" class="form-control" onchange="getAvailability(this.value)">
+                            <input type="date" name="date" id="date" class="form-control" onchange="getAvailability(this.value)" required>
                         </div>
                         <div class="col">
                             <label for="hour" class="form-label">Heure</label>
-                            <select name="hour" class="form-select" id="hour-select">
+                            <select name="hour" class="form-select" id="hour-select" required>
                             </select>
                         </div>
                     </div>
                     <?php if (!isset($_SESSION['id'])): ?>
                     <label for="lastname" class="form-label">Nom</label>
-                    <input type="text" name="lastname" id="lastname" value="<?=$_SESSION['lastname']?>" class="form-control">
+                    <input type="text" name="lastname" id="lastname" value="<?=$_SESSION['lastname']?>" class="form-control" required>
 
                     <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" name="firstname" id="firstname" value="<?=$_SESSION['firstname']?>" class="form-control">
+                    <input type="text" name="firstname" id="firstname" value="<?=$_SESSION['firstname']?>" class="form-control" required>
                     <?php endif;?>
 
                     <label for="nbrOfGuest" class="form-label">Nombre de personne</label>
-                    <input type="number" name="nbrOfGuest" id="nbrOfGuest" value="<?=$_SESSION['defaultNbrGuest']?>" class="form-control">
+                    <input type="number" name="nbrOfGuest" id="nbrOfGuest" value="<?=$_SESSION['defaultNbrGuest']?>" class="form-control" required>
 
                     <label for="emailAddress" class="form-label">Adresse e-mail</label>
-                    <input type="email" name="emailAddress" id="emailAddress" value="<?=$_SESSION['email']?>" class="form-control">
+                    <input type="email" name="emailAddress" id="emailAddress" value="<?=$_SESSION['email']?>" class="form-control" required>
 
                     <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$_SESSION['phoneNumber']?>" class="form-control">
+                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$_SESSION['phoneNumber']?>" class="form-control" required>
 
                     <label for="allergies" class="form-label">Allergies</label>
                     <textarea type="text" name="allergies" id="allergies" value="<?=$_SESSION['allergies']?>" class="form-control" rows="5"></textarea>
@@ -137,10 +137,10 @@
             <div class="modal-body">
                 <form name="log-in" action="#" method="post">
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="email" name="email" id="email" class="form-control">
+                    <input type="email" name="email" id="email" class="form-control" required>
 
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" name="password" id="password" class="form-control">
+                    <input type="password" name="password" id="password" class="form-control" required>
 
                     <input name="log-in_form" value="tryToLog" type="hidden"/>
                     <button type="submit" class="btn btn-menu">Submit</button>
@@ -181,10 +181,6 @@
                         <div class="col">
                             <label for="password" class="form-label">Mot de passe</label>
                             <input type="password" name="password" id="password" class="form-control" required>
-                        </div>
-                        <div class="col">
-                            <label for="password2" class="form-label">Conf. du mot de passe</label>
-                            <input type="password" name="password2" id="password2" class="form-control" required>
                         </div>
                     </div>
 

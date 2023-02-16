@@ -46,7 +46,7 @@ Main pages Images on menu
     align-items: center;
     background-color: #583408;
     border: none;
-    color: darkgrey;
+    color: #818080;
     margin: auto;
     padding: 0.5vw;
     width: 70%;
@@ -67,15 +67,19 @@ Modal
 --------------------------------------------------------------*/
 .modal-content {
     background-color: #583408;
-    color: darkgrey;
+    color: #818080;
 }
 
 .modal-body table {
-    border: 3px solid darkgrey;
+    border: 3px solid #818080;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
+.modal-title {
+    color: #ffffff;
+    text-align: center;
+}
 /*--------------------------------------------------------------
 # Form
 --------------------------------------------------------------*/
@@ -116,7 +120,7 @@ select #note-select {
     padding: 12px;
 }
 .img-title {
-    color: black;
+    color: #000000;
     display: flex;
     font-size: 16px;
     opacity: 0;
@@ -124,7 +128,7 @@ select #note-select {
     top: -30px;
 }
 .carousel-item:hover .hover {
-    background-color: darkgrey;
+    background-color: #818080;
     opacity: 1;
 }
 

@@ -48,7 +48,6 @@ if (!empty($_POST['reservation_form'])) {
  * Display Pictures in carousel
  */
 $pictureManager = new PictureManager();
-
 $firstPic = $pictureManager->getFirstPic();
 $files = $pictureManager->getRestPic();
 

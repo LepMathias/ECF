@@ -12,8 +12,8 @@ nav, footer {
 }
 
 .navbarParam {
-    background-color: white;
-    color: darkgrey;
+    background-color: #ffffff;
+    color: #818080;
 }
 
 .btn-param {
@@ -32,7 +32,7 @@ Formulaires
 }
 
 .card {
-    color: black;
+    color: #000000;
     margin: 0.5vw;
     padding: 0.2vw;
 }

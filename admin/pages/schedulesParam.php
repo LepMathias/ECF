@@ -31,11 +31,13 @@ include '../includes/headerParam.php'
                 <th scope="col">Déj.</th>
                 <th scope="col">Dîner</th>
                 </thead>
-                <?php
-                foreach ($schedules as $schedule) {
-                    include '../includes/schedulesView.php';
-                }
-                ?>
+                <div id="displaySchedules">
+                    <?php
+                    foreach ($schedules as $schedule) {
+                        include '../includes/schedulesView.php';
+                    }
+                    ?>
+                </div>
             </table>
         </div>
         <div class="col-md-6">
@@ -54,4 +56,10 @@ include '../includes/headerParam.php'
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+function reloadDIV() {
+    $("#displaySchedules").load(" #displaySchedules > *")
+}
+
+</script>
 </html>

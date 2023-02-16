@@ -4,9 +4,10 @@ require '../../public/src/models/MenuManager.php';
 require '../../public/src/models/PictureManager.php';
 require '../../public/src/models/SettingManager.php';
 require '../../public/src/models/SchedulesManager.php';
+include '../../db/confDB.php';
 
 try{
-    $pdo = new PDO('mysql:host=127.0.0.1;dbname=restaurant', 'root', '');
+    $pdo = new PDO("mysql:host=$HOST;dbname=$DB", $USER, $PWD);
 
     /**
      * Create / Read / Delete Meals
@@ -74,4 +75,5 @@ try{
     }
 } catch (PDOException $e) {
     file_put_contents('dblogs.log', $e->getMessage().PHP_EOL, FILE_APPEND);
+    echo "<script>alert('Une erreur s\'est produite. Contactez l\'administrateur')</script>";
 }

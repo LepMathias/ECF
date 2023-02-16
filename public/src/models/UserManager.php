@@ -31,7 +31,7 @@ class UserManager
         $statement->setFetchMode(PDO::FETCH_CLASS, 'User');
         $statement->bindValue(':email', $email);
         if ($statement->execute()) {
-            while ($user = $statement->fetch()) {
+            if ($user = $statement->fetch()) {
                 if ($user->isPasswordValid($password)) {
                     session_start();
                     $_SESSION['id'] = $user->getId();
@@ -43,7 +43,11 @@ class UserManager
                     $_SESSION['phoneNumber'] = $user->phoneNumber;
                     $_SESSION['allergies'] = $user->allergies;
                     return $user;
+                } else {
+                    echo "<script>alert('Mot de passe erroné')</script>";
                 }
+            } else {
+                echo "<script>alert('Utilisateur inconnu')</script>";
             }
         }
     }

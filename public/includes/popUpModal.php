@@ -162,20 +162,20 @@
                     <div class="row">
                         <div class="col">
                             <label for="lastname" class="form-label">Nom</label>
-                            <input type="text" name="lastname" id="lastname" class="form-control" required>
+                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Lettre uniquement" required>
                         </div>
 
                         <div class="col">
                             <label for="firstname" class="form-label">Prénom</label>
-                            <input type="text" name="firstname" id="firstname" class="form-control" required>
+                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Lettre uniquement" required>
                         </div>
                     </div>
 
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="email" name="email" id="email" class="form-control" required>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="email@valide.fr" required>
 
                     <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" required>
+                    <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="0479000000" required pattern="^((\+)33|0)[1-9](\d{2}){4}$">
 
                     <div class="row">
                         <div class="col">

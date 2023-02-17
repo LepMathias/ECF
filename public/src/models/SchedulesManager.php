@@ -44,7 +44,11 @@ class SchedulesManager
     {
         $availableHours = [];
         $schedule = $this->getSchedulesDay($day);
-        if($schedule->startDej != '' && $nbrOnLunch < $maxOfGuest) {
+        if(strlen($schedule->startDej) === 0){
+            $availableHours['lunch'] = "close";
+        } else if($nbrOnLunch > $maxOfGuest) {
+            $availableHours['lunch'] = "full";
+        } else {
             $availableLunchHours = [];
             $countLunch = strtotime($schedule->startDej);
             $countEndLunch = strtotime($schedule->endDej) - 3600;
@@ -55,7 +59,11 @@ class SchedulesManager
             }
             $availableHours['lunch'] = $availableLunchHours;
         }
-        if($schedule->startDin != '' && $nbrOnDiner < $maxOfGuest) {
+        if(strlen($schedule->startDin) === 0){
+            $availableHours['diner'] = "close";
+        } else if($nbrOnDiner > $maxOfGuest) {
+            $availableHours['diner'] = "full";
+        } else {
             $availableDinerHours = [];
             $countDiner = strtotime($schedule->startDin);
             $countEndDiner = strtotime($schedule->endDin) - 3600;
@@ -65,7 +73,7 @@ class SchedulesManager
                 $availableDinerHours[] = date('H:i', $countDiner);
             }
             $availableHours['diner'] = $availableDinerHours;
-        }
+            }
         return $availableHours;
     }
 }

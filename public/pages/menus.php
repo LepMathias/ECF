@@ -66,7 +66,11 @@ include '../includes/logic.php';
             ?>
         </div>
     </div>
+    <div class="row">
+        <button class="btn-menu w-25"><img class="pic-menu" src="../src/img/navbar/menu_horraires_pic.jpg" id="horaires-img"></button>
+    </div>
 </div>
+
 
 <?php
 include_once("../../commonFiles/includes/footer.php");

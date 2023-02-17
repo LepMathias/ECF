@@ -1,2 +1,0 @@
-SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mercredi au dimanche de 12h00 à 14h00 et de 19h00 à 21h30 
-                ...' at line 2

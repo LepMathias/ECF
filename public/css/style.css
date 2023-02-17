@@ -136,7 +136,6 @@ select #note-select {
 # MenusPage
 --------------------------------------------------------------*/
 .menus {
-    border-bottom: #A4A4A4 dotted 1px;
     margin-top: 15px;
     padding-bottom: 15px;
 }

@@ -156,3 +156,13 @@ select #note-select {
 #menus {
     margin-top: 80px;
 }
+
+.menus-card {
+    background-color: #403F3E;
+}
+
+.schedules-btn {
+    width: 50%;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+}

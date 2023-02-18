@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <nav class="row align-items-center" id="navMenu">
             <div class="col-md-3">
-                <a href="../../index.php" class="btn" id="homePage"><h1 class="text-white">Le Quai Antique</h1></a>
+                <a href="../../index.php" class="btn" id="homePage"><h1 class="text-white logo">Le Quai Antique</h1></a>
             </div>
             <div class="col-md-6 justify-content-md-start">
                 <div class="row">

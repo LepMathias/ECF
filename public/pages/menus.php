@@ -27,29 +27,47 @@ include '../includes/logic.php';
         <h3>Notre carte</h3>
     </div>
     <div class="row text-center justify-content-between">
-        <div class="col-md-3">
-            <h5 class="subTitle">Entrées</h5>
-            <?php
-            foreach ($starters as $meal){
-                include '../includes/mealView.php';
-            }
-            ?>
+        <div class="col-md-4">
+            <div class="card menus-card">
+                <div class="card-header">
+                    <h5 class="subTitle">Entrées</h5>
+                </div>
+                <div class="card-body">
+                    <?php
+                    foreach ($starters as $meal){
+                        include '../includes/mealView.php';
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-            <h5 class="subTitle">Plats</h5>
-            <?php
-            foreach ($mainCourses as $meal){
-                include '../includes/mealView.php';
-            }
-            ?>
+        <div class="col-md-4">
+            <div class="card menus-card">
+                <div class="card-header">
+                    <h5 class="subTitle">Plats</h5>
+                </div>
+                <div class="card-body">
+                    <?php
+                    foreach ($mainCourses as $meal){
+                        include '../includes/mealView.php';
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-            <h5 class="subTitle">Desserts</h5>
-            <?php
-            foreach ($desserts as $meal){
-                include '../includes/mealView.php';
-            }
-            ?>
+        <div class="col-md-4">
+            <div class="card menus-card">
+                <div class="card-header">
+                    <h5 class="subTitle">Desserts</h5>
+                </div>
+                <div class="card-body">
+                    <?php
+                    foreach ($desserts as $meal){
+                        include '../includes/mealView.php';
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -57,17 +75,21 @@ include '../includes/logic.php';
     <div class="row text-center head-menus" id="head-menus">
         <h3>Nos menus</h3>
     </div>
-    <div class="row text-center">
-        <div class="col">
-            <?php
-            foreach ($menus as $menu){
-                include '../includes/menuView.php';
-            }
-            ?>
+    <div class="card menus-card">
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col">
+                    <?php
+                    foreach ($menus as $menu){
+                        include '../includes/menuView.php';
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
-        <button class="btn-menu w-25"><img class="pic-menu" src="../src/img/navbar/menu_horraires_pic.jpg" id="horaires-img"></button>
+        <button class="btn-menu schedules-btn"><img class="pic-menu" src="../src/img/navbar/menu_horraires_pic.jpg" id="horaires-img"></button>
     </div>
 </div>
 

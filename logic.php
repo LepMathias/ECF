@@ -1,5 +1,4 @@
 <?php
-require 'public/src/models/PostManager.php';
 require 'public/src/models/UserManager.php';
 require 'public/src/models/ReservationManager.php';
 require 'public/src/models/PictureManager.php';
@@ -9,15 +8,6 @@ include 'db/confDB.php';
 
 try {
     $pdo = new PDO("mysql:host=$HOST;dbname=$DB", $USER, $PWD);
-
-    /**
-     * Posts Gestion -> Future Fonction
-     */
-    $postManager = new PostManager($pdo);
-    if (!empty($_POST['note'])) {
-        $postManager->addFeedback($_POST['note'], htmlentities($_POST['title']), htmlentities($_POST['content']));
-    }
-    $posts = $postManager->getPosts();
 
     /**
      * User gestion -> sign_up and log_in

@@ -9,15 +9,13 @@ $schedulesManager = new SchedulesManager($pdo);
 $settingManager = new SettingManager($pdo);
 $reservationManager = new ReservationManager($pdo);
 
-//$s = date(mktime(0,0,0,3,20,2023));
-//$ss = date('Y-m-d', $s);
 $q = $_GET['q'];
 $date = date('l', strtotime($q));
     switch ($date) {
         case 'Monday':
             $day = 'Lundi';
             break;
-        case 'Thuesday':
+        case 'Tuesday':
             $day = 'Mardi';
             break;
         case 'Wednesday':

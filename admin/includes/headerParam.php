@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid headerParam">
     <div class="row navbarParam justify-content-around">
         <a href="../pages/galleryParam.php" class="col btn btn-param" id="gallery-btn">Gallerie Photos<i
                 class="bi bi-caret-down-fill"></i></a>

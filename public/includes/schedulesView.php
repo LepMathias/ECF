@@ -1,7 +1,7 @@
 <tr>
-    <th scope="row"><?=$schedule->getDay()?></th>
-    <td><?=$schedule->getStartDej().' - '.$schedule->getEndDej()?>
+    <th scope="row"><?=$schedule->day?></th>
+    <td><?=$schedule->startDej.' - '.$schedule->endDej?>
     </td>
-    <td><?=$schedule->getStartDin().' - '.$schedule->getEndDin()?>
+    <td><?=$schedule->startDin.' - '.$schedule->endDin?>
     </td>
 </tr>

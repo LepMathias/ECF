@@ -2,6 +2,7 @@ body {
     background-color: #583408;
     color: #ffffff;
     font-family: "DejaVu Serif", serif;
+    font-size: 1.8vh;
 }
 
 nav, footer {
@@ -19,8 +20,16 @@ nav, footer {
 .btn-param {
     display: inline-block;
     justify-content: space-around;
+    font-size: 2vh;
 }
 
+.text-white, #navMenu {
+    font-size: 2vh;
+}
+
+.logo {
+    font-size: 3vh;
+}
 /*--------------------------------------------------------------
 Formulaires
 --------------------------------------------------------------*/
@@ -56,4 +65,12 @@ th {
 
 tfoot th {
     text-align: right;
+}
+
+/*--------------------------------------------------------------
+Reservations table
+--------------------------------------------------------------*/
+td, th {
+    text-align: center;
+    border: black solid 1px;
 }

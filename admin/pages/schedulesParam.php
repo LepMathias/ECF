@@ -43,8 +43,8 @@ include '../includes/headerParam.php'
         <div class="col-md-6">
             <form name="schedulesFooterForm" method="post" action="#">
                 <label class="form-label" for="schedulesFooter">Horaires sommaire en pied de page</label>
-                <input class="form-control" type="text" name="schedulesFooter" id="schedulesFooter" value="<?=$schedulesFooter->getContent()?>">
-                <input type="hidden" name="settingId" id="settingId" value="<?=$schedulesFooter->getId()?>">
+                <input class="form-control" type="text" name="schedulesFooter" id="schedulesFooter" value="<?=$schedulesFooter->content?>">
+                <input type="hidden" name="settingId" id="settingId" value="<?=$schedulesFooter->id?>">
                 <button class="btn btn-success mt-3" type="submit">Mettre à jour</button>
             </form>
         </div>
@@ -57,9 +57,7 @@ include '../includes/headerParam.php'
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-function reloadDIV() {
-    $("#displaySchedules").load(" #displaySchedules > *")
-}
+
 
 </script>
 </html>

@@ -1,9 +1,10 @@
-
 <?php
+include 'confDB.php';
+
 if(isset($_GET['q'])){
     $q = $_GET['q'];
 
-    $pdo = new PDO('mysql:host=127.0.0.1;dbname=restaurant', 'root', '');
+    $pdo = new PDO("mysql:host=$HOST;dbname=$DB", $USER, $PWD);
 
     $statement = $pdo->prepare("SELECT reservations.*,
                                         users.lastname AS Ulastname,
@@ -26,18 +27,18 @@ if(isset($_GET['q'])){
         }
     }*/
 
-    echo "<table>
+    echo "<table class='mt-3'>
 <tr>
+<th>Heure</th>
 <th>Nom</th>
 <th>Prénom</th>
-<th>Date</th>
-<th>Heure</th>
 <th>Nbr de cvts</th>
 <th>allergies</th>
 </tr>";
 
     foreach($result as $row) {
         echo "<tr>";
+        echo "<td>".$row['hour']."</td>";
         if(isset($row['Ulastname'])){
             echo "<td>".$row['Ulastname']."</td>";
             echo "<td>".$row['Ufirstname']."</td>";
@@ -45,8 +46,6 @@ if(isset($_GET['q'])){
             echo "<td>".$row['lastname']."</td>";
             echo "<td>".$row['firstname']."</td>";
         }
-        echo "<td>".$row['date']."</td>";
-        echo "<td>".$row['hour']."</td>";
         echo "<td>".$row['nbrOfGuest']."</td>";
         echo "<td>".$row['allergies']."</td>";
         echo "<tr>";

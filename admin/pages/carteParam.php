@@ -26,7 +26,7 @@ include '../includes/headerParam.php'
         <div class="col-md-4">
             <div class="card" id="menu-item">
                 <form class="row" method="post" action="#">
-                    <div class="col-9 card-header">
+                    <div class="col-md-9 card-header">
                         <div class="card-title">
                             <h3>Entrées</h3>
                             <label class="form-label" for="title"><h5>Titre</h5></label>
@@ -37,7 +37,7 @@ include '../includes/headerParam.php'
                             <textarea class="form-control" type="text" name="description" id="description"></textarea>
                         </div>
                     </div>
-                    <div class="col-3 justify-content-between">
+                    <div class="col-md-3 justify-content-between">
                         <div class="card-footer">
                             <div class="row">
                                 <label class="form-label" for="price"><h5>Prix €</h5></label>
@@ -58,7 +58,7 @@ include '../includes/headerParam.php'
         <div class="col-md-4">
             <div class="card" id="menu-item">
                 <form class="row" method="post" action="#">
-                    <div class="col-9 card-header">
+                    <div class="col-md-9 card-header">
                         <div class="card-title">
                             <h3>Plats</h3>
                             <label class="form-label" for="title"><h5>Titre</h5></label>
@@ -70,7 +70,7 @@ include '../includes/headerParam.php'
                             <textarea class="form-control" type="text" name="description" id="description"></textarea>
                         </div>
                     </div>
-                    <div class="col-3 justify-content-between">
+                    <div class="col-md-3 justify-content-between">
                         <div class="card-footer">
                             <div class="row">
                                 <label class="form-label" for="price"><h5>Prix €</h5></label>
@@ -90,7 +90,7 @@ include '../includes/headerParam.php'
         <div class="col-md-4">
             <div class="card" id="menu-item">
                 <form class="row" method="post" action="#">
-                    <div class="col-9 card-header">
+                    <div class="col-md-9 card-header">
                         <div class="card-title">
                             <h3>Desserts</h3>
                             <label class="form-label" for="title"><h5>Titre</h5></label>
@@ -102,7 +102,7 @@ include '../includes/headerParam.php'
                             <textarea class="form-control" type="text" name="description" id="description"></textarea>
                         </div>
                     </div>
-                    <div class="col-3 justify-content-between">
+                    <div class="col-md-3 justify-content-between">
                         <div class="card-footer">
                             <div class="row">
                                 <label class="form-label" for="price"><h5>Prix €</h5></label>

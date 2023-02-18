@@ -41,43 +41,6 @@
         </div>
     </div>
 </div>
-<!-- Pop up modal feedback -->
-<div class="modal fade" id="feedback-modal">
-    <input name="form_action" value="sendmessage" type="hidden"/>
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Partagez votre expérience</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form name="form-feedback" action="#" method="post">
-                    <div class="row">
-                        <div class="col-md">
-                            <label for="note" class="form-label">Note</label>
-                            <select name="note" class="form-select" id="note-select">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option selected value="5">5</option>
-                            </select>
-                        </div>
-                        <div class="col-md">
-                            <label for="title" class="form-label">Titre</label>
-                            <input type="text" name="title" id="title" class="form-control">
-                        </div>
-                    </div>
-
-                    <label for="content" class="form-label">Votre avis</label>
-                    <textarea style="font-family: aria,sans-serif;" type="text" name="content" id="content" class="form-control" rows="8"></textarea>
-
-                    <button type="submit" class="btn btn-menu">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Pop up modal reservation -->
 <div class="modal fade" id="reservation-modal">
     <div class="modal-dialog modal-dialog-centered">
@@ -120,7 +83,7 @@
                     <textarea type="text" name="allergies" id="allergies" value="<?=$_SESSION['allergies']?>" class="form-control" rows="5"></textarea>
 
                     <input name="reservation_form" value="newReservation" type="hidden"/>
-                    <button type="submit" class="btn btn-menu">Submit</button>
+                    <button type="submit" class="btn btn-menu">Réserver</button>
                 </form>
             </div>
         </div>
@@ -187,11 +150,11 @@
                     <label for="defaultNbrGuest" class="form-label">Nombre de convive par défault</label>
                     <input type="number" name="defaultNbrGuest" id="defaultNbrGuest" class="form-control" min="1" max="20">
 
-                    <label for="allergies" class="form-label">Commentaire / Allergies</label>
+                    <label for="allergies" class="form-label">Allergies</label>
                     <textarea type="text" name="allergies" id="allergies" class="form-control" rows="4"></textarea>
 
                     <input name="sign-up_form" value="newGuest" type="hidden"/>
-                    <button type="submit" class="btn btn-menu">Submit</button>
+                    <button type="submit" class="btn btn-menu">S'Inscrire</button>
                 </form>
             </div>
         </div>

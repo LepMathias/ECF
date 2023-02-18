@@ -101,22 +101,10 @@ include 'logic.php';
                 <div class="row">
                     <button class="btn-menu"><img class="pic-menu modal-btn" src="public/src/img/navbar/menu_allergenes_pic.jpg" id="allergenes_img"></button>
                 </div>
-                <div class="row">
-                    <button class="btn-menu"><img class="pic-menu" src="public/src/img/navbar/menu_horraires_pic.jpg" id="horaires-img"></button>
-                </div>
             </div>
             <div class="col-md-4" id="display-feedback">
-                <div class="card">
-                    <div class="card-header">
-                        <button class="btn-menu"><p class="modal-btn" id="feedback">Laissez votre avis</p></button>
-                    </div>
-                    <div class="card-body">
-                        <?php
-                        foreach ($posts as $post) {
-                            include 'public/pages/postView.php';
-                        }
-                        ?>
-                    </div>
+                <div class="row">
+                    <button class="btn-menu"><img class="pic-menu" src="public/src/img/navbar/menu_horraires_pic.jpg" id="horaires-img"></button>
                 </div>
             </div>
         </div>

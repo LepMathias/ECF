@@ -44,8 +44,8 @@ include '../includes/headerParam.php'
         <div class="col-md-2">
             <form name="maxOfGuest" method="post" action="#">
                 <label for="maxOfGuest" class="form-label">Nombre de personne max par service</label>
-                <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->getContent()?>">
-                <input type="hidden" name="settingId" id="settingId" value="<?=$maxOfGuest->getId()?>">
+                <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->content?>">
+                <input type="hidden" name="settingId" id="settingId" value="<?=$maxOfGuest->id?>">
                 <button type="submit" class="btn btn-success mt-1">Submit</button>
             </form>
         </div>

@@ -10,19 +10,24 @@ class UserManager
     public function addUser(string $lastname, string $firstname, string $email, string $phoneNumber,
                             string $password, int $defaultNbrGuest, string $allergies)
     {
-
-        $statement = $this->pdo->prepare('INSERT INTO users 
+        try {
+            $statement = $this->pdo->prepare('INSERT INTO users 
                     (id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies) 
                     VALUES (UUID(), :lastname, :firstname,:email, :phoneNumber, :password, :defaultNbrGuest, :allergies)');
-        $statement->bindValue(':lastname', $lastname);
-        $statement->bindValue(':firstname', $firstname);
-        $statement->bindValue(':email', $email);
-        $statement->bindValue(':phoneNumber', $phoneNumber);
-        $statement->bindValue(':password', password_hash($password, PASSWORD_BCRYPT));
-        $statement->bindValue(':defaultNbrGuest', $defaultNbrGuest);
-        $statement->bindValue(':allergies', $allergies);
+            $statement->bindValue(':lastname', $lastname);
+            $statement->bindValue(':firstname', $firstname);
+            $statement->bindValue(':email', $email);
+            $statement->bindValue(':phoneNumber', $phoneNumber);
+            $statement->bindValue(':password', password_hash($password, PASSWORD_BCRYPT));
+            $statement->bindValue(':defaultNbrGuest', $defaultNbrGuest);
+            $statement->bindValue(':allergies', $allergies);
 
-        $statement->execute();
+            $statement->execute();
+            return $regStatus = 'OK';
+            } catch(PDOException $e) {
+            file_put_contents('../../../db/dblogs.log', $e->getMessage().PHP_EOL, FILE_APPEND);
+            return $regStatus = 'FAIL';
+            }
     }
 
     public function connectUser(string $email, string $password)

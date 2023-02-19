@@ -32,6 +32,7 @@ if(isset($_GET['q'])){
 <th>Heure</th>
 <th>Nom</th>
 <th>Prénom</th>
+<th>Téléphone</th>
 <th>Nbr de cvts</th>
 <th>allergies</th>
 </tr>";
@@ -46,6 +47,7 @@ if(isset($_GET['q'])){
             echo "<td>".$row['lastname']."</td>";
             echo "<td>".$row['firstname']."</td>";
         }
+        echo "<td>".$row['phoneNumber']."</td>";
         echo "<td>".$row['nbrOfGuest']."</td>";
         echo "<td>".$row['allergies']."</td>";
         echo "<tr>";

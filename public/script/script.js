@@ -24,6 +24,14 @@ $(function($) {
     $('#sign-up').click(function() {
         $('#sign-up-modal').modal('show');
     })
+    $('#reg-modal-btn').click(function() {
+        $('#reg-modal').modal('hide');
+        $('#log-in-modal').modal('show');
+    })
+    $('#reg-modal-btn-2').click(function() {
+        $('#reg-modal').modal('hide');
+        $('#sign-up-modal').modal('show');
+    })
 });
 function getAvailability(date){
     fetch("db/getAvailability.php?q=" + date)

@@ -21,7 +21,7 @@ try {
         }
     }
     if (!empty($_POST['sign-up_form'])) {
-        $userManager->addUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']), htmlspecialchars($_POST['email']),
+        $regStatus = $userManager->addUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']), htmlspecialchars($_POST['email']),
             htmlentities($_POST['phoneNumber']), $_POST['password'], htmlentities($_POST['defaultNbrGuest']), htmlentities($_POST['allergies']));
     }
 
@@ -31,9 +31,9 @@ try {
     $reservationManager = new ReservationManager($pdo);
     if (!empty($_POST['reservation_form'])) {
         if (isset($_SESSION['id'])) {
-            $reservationManager->addReservationUId($_POST['date'], $_POST['hour'], $_POST['nbrOfGuest'], $_SESSION['id'], $_POST['allergies']);
+            $reservationStatus = $reservationManager->addReservationUId($_POST['date'], $_POST['hour'], $_POST['nbrOfGuest'], $_SESSION['id'], $_POST['allergies']);
         } else {
-            $reservationManager->addReservation($_POST['date'], $_POST['hour'], $_POST['nbrOfGuest'], $_POST['lastname'], $_POST['firstname'], $_POST['phoneNumber'], $_POST['allergies']);
+            $reservationStatus = $reservationManager->addReservation($_POST['date'], $_POST['hour'], $_POST['nbrOfGuest'], $_POST['lastname'], $_POST['firstname'], $_POST['phoneNumber'], $_POST['allergies']);
         }
     }
 

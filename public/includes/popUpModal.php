@@ -77,7 +77,7 @@
                     <input type="email" name="emailAddress" id="emailAddress" value="<?=$_SESSION['email']?>" class="form-control" required>
 
                     <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$_SESSION['phoneNumber']?>" class="form-control" required>
+                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$_SESSION['phoneNumber']?>" class="form-control" required pattern="^((\+)33|0)[1-9](\d{2}){4}$">
 
                     <label for="allergies" class="form-label">Allergies</label>
                     <textarea type="text" name="allergies" id="allergies" value="<?=$_SESSION['allergies']?>" class="form-control" rows="5"></textarea>
@@ -112,7 +112,7 @@
         </div>
     </div>
 </div>
-<!-- Pop up modal sign_in-->
+<!-- Pop up modal sign_up -->
 <div class="modal fade" id="sign-up-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -148,7 +148,7 @@
                     </div>
 
                     <label for="defaultNbrGuest" class="form-label">Nombre de convive par défault</label>
-                    <input type="number" name="defaultNbrGuest" id="defaultNbrGuest" class="form-control" min="1" max="20">
+                    <input type="number" name="defaultNbrGuest" id="defaultNbrGuest" class="form-control" min="1" max="20" required>
 
                     <label for="allergies" class="form-label">Allergies</label>
                     <textarea type="text" name="allergies" id="allergies" class="form-control" rows="4"></textarea>
@@ -157,6 +157,66 @@
                     <button type="submit" class="btn btn-menu">S'Inscrire</button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Pop up modal result of sign up -->
+<div class="modal fade" id="reg-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <?php if($regStatus === "OK") { ?>
+                <div class="modal-header">
+                    <h5 class="modal-title">Inscription terminée</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Bienvenus<br><br>
+                                            Votre compte est à présent actif.<br>
+                        Il ne vous reste plus qu'a vous <button type="button" id="reg-modal-btn">connecter</button> pour réserver</p>
+                </div>
+            <?php } else { ?>
+                <div class="modal-header">
+                    <h5 class="modal-title">Erreur</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Une erreur est survenu lors de la création de ovtre compte<br><br>
+                        Si le problème persiste, contactez l'administrateur du site</p>
+                        <button type="button" id="reg-modal-btn-2">Inscrivez-vous</button>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+<!-- Pop up modal result of reservation -->
+<div class="modal fade" id="res-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <?php if($reservationStatus[0] == "OK") { ?>
+                <div class="modal-header">
+                    <h5 class="modal-title">Réservation enregistrée</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Félicitations<br><br>
+                        Vous venez de réserver une table <br>
+                        pour <?=$reservationStatus[3]?> personnes.<br><br>
+                        Nous vous attendrons <br>
+                        le <?=$reservationStatus[1]?> à <?=$reservationStatus[2]?>
+                    </p>
+                </div>
+            <?php } else { ?>
+                <div class="modal-header">
+                    <h5 class="modal-title">Erreur</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Une erreur est survenu lors de votre réservation<br><br>
+                        Si le problème persiste, contactez l'administrateur du site
+                    </p>
+                    <button type="button" id="res-modal-btn-2">Réservez</button>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </div>

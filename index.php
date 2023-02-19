@@ -122,6 +122,17 @@ include 'logic.php';
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="public/script/script.js"></script>
+    <script type="text/javascript">
+        $(function($) {
+            <?php
+            if(isset($regStatus)) { ?>
+            $('#reg-modal').modal('show');
+            <?php }
+            if(isset($reservationStatus)) { ?>
+            $('#res-modal').modal('show');
+            <?php } ?>
+        });
+    </script>
     </body>
 
     </html>

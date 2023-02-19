@@ -17,7 +17,12 @@ footer p {
 
 .text-left {
     text-align: left;
-}
+
+}  #reg-modal-btn {
+    background-color: #583408;
+    color: #ffffff;
+    border: none;
+   }
 /*--------------------------------------------------------------
 Schedules table
 --------------------------------------------------------------*/

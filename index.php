@@ -94,7 +94,7 @@ include 'logic.php';
         <div class="row">
             <div class="col-md-4">
                 <div class="row">
-                    <button class="btn-menu"><img class="pic-menu" src="public/src/img/navbar/menu_icone-reservation.png" id="reservation"></button>
+                    <button class="btn-menu"><img class="pic-menu" src="public/src/img/navbar/menu_icone-reservation.jpg" id="reservation"></button>
                 </div>
             </div>
             <div class="col-md-4">

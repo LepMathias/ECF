@@ -1,3 +1,8 @@
 SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'posts' already exists
 SQLSTATE[42S02]: Base table or view not found: 1146 Table 'restaurant2.settings' doesn't exist
 SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'content' at row 2
+SQLSTATE[HY000] [2002] Connection refused
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'VALUES ("2023-02-16", "12:15", "5", "Dupond", "Albert", "0203040506", "Gluten...' at line 3
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 10
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '"Le soir du mercredi au vendredi, le midi de samedi à dimanche", "60"' at line 3
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 3

@@ -17,23 +17,31 @@ nav, footer {
     color: #818080;
 }
 
+.text-white, #navMenu {
+    font-size: 2vh;
+}
+
+/*--------------------------------------------------------------
+Navbar Param Page
+--------------------------------------------------------------*/
+
 .btn-param {
     display: inline-block;
     justify-content: space-around;
     font-size: 2vh;
 }
 
-.text-white, #navMenu {
-    font-size: 2vh;
-}
-
 .logo {
     font-size: 3vh;
 }
+
+.price  {
+    text-align: end;
+}
+
 /*--------------------------------------------------------------
 Formulaires
 --------------------------------------------------------------*/
-
 .form-label {
     text-align: center;
     align-items: center;
@@ -49,7 +57,7 @@ Formulaires
 /*--------------------------------------------------------------
 Schedules table
 --------------------------------------------------------------*/
-tbody td, thead th, h5 {
+td, th, h5 {
     text-align: center;
 }
 
@@ -67,10 +75,19 @@ tfoot th {
     text-align: right;
 }
 
+@media (max-width: 700px){
+    td, th, h5 {
+        font-size: 3vw;
+        padding: 2px;
+    }
+}
 /*--------------------------------------------------------------
 Reservations table
 --------------------------------------------------------------*/
-td, th {
-    text-align: center;
+.displayReservations {
     border: black solid 1px;
+}
+
+.btn-picture {
+    position: sticky;
 }

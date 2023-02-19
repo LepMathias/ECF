@@ -1,4 +1,5 @@
 <?php
+require '../src/models/UserManager.php';
 require '../src/models/MealManager.php';
 require '../src/models/MenuManager.php';
 require '../src/models/SettingManager.php';
@@ -9,6 +10,22 @@ include'../../db/confDB.php';
 $pdo = new PDO("mysql:host=$HOST;dbname=$DB", $USER, $PWD);
 
 try {
+    /**
+     * User gestion -> sign_up and log_in
+     */
+    $userManager = new UserManager($pdo);
+    if (!empty($_POST['log-in_form'])) {
+        try {
+            $user = $userManager->connectUser(htmlspecialchars($_POST['email']), htmlentities($_POST['password']));
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+    if (!empty($_POST['sign-up_form'])) {
+        $userManager->addUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']), htmlspecialchars($_POST['email']),
+            htmlentities($_POST['phoneNumber']), $_POST['password'], htmlentities($_POST['defaultNbrGuest']), htmlentities($_POST['allergies']));
+    }
+
     /**
      * Display meals and menus on Menus Page
      */

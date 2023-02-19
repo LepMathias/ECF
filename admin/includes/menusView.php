@@ -1,7 +1,7 @@
 <div class="card">
     <div class="row">
         <h5 class="col"><?=$menu->title?></h5>
-        <h6 class="col"><?=$menu->price?>€</h6>
+        <h6 class="col price"><?=$menu->price?>€</h6>
     </div>
     <div class="row">
         <p class="col"><?=$menu->description?></p>

@@ -33,7 +33,7 @@ include '../includes/headerParam.php'
                     <input class="form-control" type="text" id="title" name="pictureTitle">
 
                     <input name="upload-picture" value="pictureUploaded" type="hidden"/>
-                    <button type="submit" class="btn btn-menu btn-success mt-3 mb-3">Submit</button>
+                    <button type="submit" class="btn btn-menu btn-success mt-3 mb-3">Upload</button>
                 </form>
             </div>
             <div class="col-md-10">

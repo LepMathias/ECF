@@ -2,3 +2,8 @@ SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not ma
 SQLSTATE[HY000] [2002] No such file or directory
 SQLSTATE[HY000] [2002] No such file or directory
 SQLSTATE[HY000] [2002] No such file or directory
+SQLSTATE[HY000] [1049] Unknown database 'restaurant3'
+SQLSTATE[HY000] [1049] Unknown database 'restaurant3'
+SQLSTATE[HY000] [1049] Unknown database 'restaurant3'
+SQLSTATE[HY000] [1049] Unknown database 'restaurant3'
+SQLSTATE[HY000] [1049] Unknown database 'restaurant3'

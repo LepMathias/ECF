@@ -27,13 +27,6 @@ include '../includes/headerParam.php'
             <form name="reservationsCheck" method="post" action="">
                 <label for="date" class="form-label">Date</label>
                 <input type="date" name="date" id="date" class="form-control" onchange="showReservations(this.value)">
-
-                <label for="service" class="form-label">Heure</label>
-                <select name="service" class="form-select datepicker" id="hour-select">
-                    <option value="both" selected>Tous</option>
-                    <option value="Déjeuner">Déjeuner</option>
-                    <option value="Dîner">Dîner</option>
-                </select>
             </form>
         </div>
         <div class="col-md-8">
@@ -46,7 +39,7 @@ include '../includes/headerParam.php'
                 <label for="maxOfGuest" class="form-label">Nombre de personne max par service</label>
                 <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->content?>">
                 <input type="hidden" name="settingId" id="settingId" value="<?=$maxOfGuest->id?>">
-                <button type="submit" class="btn btn-success mt-1">Submit</button>
+                <button type="submit" class="btn btn-success mt-1">Valider</button>
             </form>
         </div>
     </div>

@@ -53,6 +53,11 @@ include '../includes/headerParam.php'
                         </div>
                     </div>
                 </form>
+                <?php
+                foreach ($starters as $starter){
+                    include '../includes/startersView.php';
+                }
+                ?>
             </div>
         </div>
         <div class="col-md-4">
@@ -85,6 +90,11 @@ include '../includes/headerParam.php'
                         </div>
                     </div>
                 </form>
+                <?php
+                foreach ($mains as $main){
+                    include '../includes/mainCourseView.php';
+                }
+                ?>
             </div>
         </div>
         <div class="col-md-4">
@@ -117,35 +127,16 @@ include '../includes/headerParam.php'
                         </div>
                     </div>
                 </form>
+                <?php
+                foreach ($desserts as $dessert){
+                    include '../includes/dessertsView.php';
+                }
+                ?>
             </div>
         </div>
     </div>
 </div>
-<div class="container-fluid" id="display-carte">
-    <div class="row">
-        <div class="col-md-4">
-            <?php
-            foreach ($starters as $starter){
-                include '../includes/startersView.php';
-            }
-            ?>
-        </div>
-        <div class="col-md-4">
-            <?php
-            foreach ($mains as $main){
-                include '../includes/mainCourseView.php';
-            }
-            ?>
-        </div>
-        <div class="col-md-4">
-            <?php
-            foreach ($desserts as $dessert){
-                include '../includes/dessertsView.php';
-            }
-            ?>
-        </div>
-    </div>
-</div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s

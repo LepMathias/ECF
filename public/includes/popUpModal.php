@@ -10,7 +10,7 @@
                 <table>
                     <thead>
                     <th scope="col" class="text-left">Jour</th>
-                    <th scope="col">Déj.</th>
+                    <th scope="col">Déjeuner</th>
                     <th scope="col">Dîner</th>
                     </thead>
                     <?php

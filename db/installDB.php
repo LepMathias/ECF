@@ -1,23 +1,22 @@
 <?php
 include 'confDB.php';
 try {
-    /*Création PDO dsn = MySQL*/
+/**
+ * Création PDO dsn = MySQL
+ */
     $pdo = new PDO("mysql:host=$HOST", $USER, $PWD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    /* Install DataBase Restaurant*/
+/**
+ * Install DataBase Restaurant
+ */
     $pdo->exec("DROP DATABASE IF EXISTS $DB");
     $pdo->exec("CREATE DATABASE $DB");
     $restoPdo = new PDO("mysql:host=$HOST;dbname=$DB", $USER, $PWD);
 
-    /*Création table "posts"*/
-    $restoPdo->exec('CREATE TABLE posts (
-        id INT(11) PRIMARY KEY AUTO_INCREMENT,
-        note INT(1) NOT NULL,
-        title VARCHAR(50),
-        message VARCHAR(200))');
-
-    /*Création table "users"*/
+/**
+ * Création table "users"
+ */
     $restoPdo->exec('CREATE TABLE users (
         id CHAR(36) PRIMARY KEY NOT NULL,
         lastname VARCHAR(50) NOT NULL,
@@ -44,10 +43,12 @@ try {
 
     $statement->execute();
 
-    /*Création table "reservations*/
+/**
+ * Création table "reservations
+ */
     $restoPdo->exec('CREATE TABLE reservations (
         userId CHAR(36),
-        id INT(11) PRIMARY KEY NOT NULL AUTO_INCREmENT,
+        id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
         date CHAR(10) NOT NULL,
         hour CHAR(5) NOT NULL,
         nbrOfGuest CHAR(3) NOT NULL,
@@ -58,10 +59,24 @@ try {
         FOREIGN KEY (userId) REFERENCES users(id)
         )');
 
-    /*Création table categoriesMeal*/
+    /*Insertion de réservations*/
+    $restoPdo->exec('INSERT INTO reservations (date, hour, nbrOfGuest, lastname, firstname, phoneNumber, allergies)
+                                VALUES ("2023-02-16", "12:00", "3", "Dupont", "Gérard", "0102030405", ""),
+                                       ("2023-02-16", "12:15", "5", "Dupond", "Albert", "0203040506", "Gluten"),
+                                       ("2023-02-16", "12:30", "2", "Martin", "Bernard", "0304050607", "Lactose"),
+                                       ("2023-02-16", "12:45", "6", "Martinel", "Jean", "0405060708", "Gluten - Lactose"),
+
+                                       ("2023-02-16", "19:00", "2", "Martin", "Bernard", "0304050607", "Lactose"),
+                                       ("2023-02-16", "19:15", "2", "Dupont", "Gérard", "0102030405", ""),
+                                       ("2023-02-16", "19:30", "3", "Martinel", "Jean", "0405060708", "Gluten - Lactose"),
+                                       ("2023-02-16", "19:45", "2", "Dupond", "Albert", "0203040506", "Gluten")');
+
+/**
+ * Création table categoriesMeal
+ */
     $restoPdo->exec('CREATE TABLE categoriesMeal (
         id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(20) NOT NULL);');
+        name VARCHAR(50) NOT NULL);');
 
     /*Alimentation de la categoriesMeal table*/
     $restoPdo->exec("INSERT INTO categoriesMeal (name) 
@@ -69,7 +84,9 @@ try {
                ('main course'), 
                ('dessert')");
 
-    /*Création table Meal*/
+/**
+ * Création table Meal
+ */
     $restoPdo->exec('CREATE TABLE meals (
         id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         title VARCHAR(50) NOT NULL,
@@ -78,15 +95,38 @@ try {
         categoryId INT(1) NOT NULL,
         FOREIGN KEY (categoryId) REFERENCES categoriesMeal(id));');
 
-    /*Création table Menu*/
+    /*Insertion d'entrées, de plats et de desserts*/
+    $restoPdo->exec('INSERT INTO meals (title, description, price, categoryId)
+                                VALUES  ("Terrine de cochon", "Aux noisettes et abricots secs, sucrine et gel de pommes", "22", "1"),
+                                        ("Millefeuille de gorgonzola", "Au mascarpone aux poiresde Savoie et noix de pécan", "20", "1"),
+                                        ("Foie gras de canard", "Mariné au cognac et Porto, confit d\'oignon au balsamique", "29", "1"),
+
+                                        ("Suprême de poulet fermier", "condiments rougaille et guacamole, accras de légumes et patate douce", "32", "2"),
+                                        ("Poitrine de cochon confite", "Oeufs parfait meurette, champignons, truffes", "35", "2"),
+                                        ("Tartare de boeuf", "Charolais assaisonné en cuisine", "26", "2"),
+                                        
+                                        ("Rafraichie d\'agrumes", "grenade à la citronelle et gingembre, sorbet citron", "12", "3"),
+                                        ("Poire de Savoie", "Pochée façon belle Hélène", "12", "3"),
+                                        ("Panna cotta fruit de la passion", "Ananas mariné à la vanille et citron vert", "12", "3")');
+
+/**
+ * Création table Menu
+ */
     $restoPdo->exec('CREATE TABLE menus (
         id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         title VARCHAR(50) NOT NULL,
-        availability VARCHAR(150) NOT NULL,
         description VARCHAR(250) NOT NULL,
+        availability VARCHAR(150) NOT NULL,
         price CHAR(3) NOT NULL)');
 
-    /*Création table schedules*/
+    /*Insertion de menus*/
+    $restoPdo->exec('INSERT INTO menus (title, description, availability, price)
+                                VALUES  ("Menu du jour", "Entrée, Plat, Dessert (unique, sans choix)", "Le midi du mercredi au vendredi", "28"),
+                                        ("Menu Fraicheur", "Entrée, Plat, dessert (au choix, à la carte)", "Le soir du mercredi au vendredi, le midi de samedi à dimanche", "60")');
+
+/**
+ * Création table schedules
+ */
     $restoPdo->exec('CREATE TABLE schedules (
         id INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         day VARCHAR(8) NOT NULL,
@@ -98,15 +138,17 @@ try {
 
     /*Alimentation de la schedules table*/
     $restoPdo->exec("INSERT INTO schedules (day, startDej, endDej, startDin, endDin) 
-                        VALUES ('Lundi', '', '', '', ''), 
-                               ('Mardi', '', '', '', ''),
-                               ('Mercredi', '12:00', '14:00', '19:00', '21:30'),
-                               ('Jeudi', '12:00', '14:00', '19:00', '21:30'),
-                               ('Vendredi', '12:00', '14:00', '19:00', '21:30'),
-                               ('Samedi', '12:00', '14:00', '19:00', '21:30'),
-                               ('Dimanche', '12:00', '14:00', '19:00', '21:30')");
+                                VALUES ('Lundi', '', '', '', ''), 
+                                       ('Mardi', '', '', '', ''),
+                                       ('Mercredi', '12:00', '14:00', '19:00', '21:30'),
+                                       ('Jeudi', '12:00', '14:00', '19:00', '21:30'),
+                                       ('Vendredi', '12:00', '14:00', '19:00', '21:30'),
+                                       ('Samedi', '12:00', '14:00', '19:00', '21:30'),
+                                       ('Dimanche', '12:00', '14:00', '19:00', '21:30')");
 
-    /*Création table settings*/
+/**
+ * Création table settings
+ */
     $restoPdo->exec('CREATE TABLE settings (
         id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         name VARCHAR(50) NOT NULL,
@@ -115,20 +157,11 @@ try {
 
     /*Alimentation de la table settings*/
     $restoPdo->exec("INSERT INTO settings (name, content) 
-        VALUES ('maxOfGuest', '40'),
-        ('schedulesFooter', 'du mercredi au dimanche de 12h00 à 14h00 et de 19h00 à 21h30')");
+                                VALUES  ('maxOfGuest', '12'),
+                                        ('schedulesFooter', 'du mercredi au dimanche de 12h00 à 14h00 et de 19h00 à 21h30')");
 
-    echo "Installation réussie";
+    echo "Database successfully installed";
 
 } catch (PDOException $e) {
     file_put_contents('dblogs.log', $e->getMessage().PHP_EOL, FILE_APPEND);
 }
-/*
-
-INSERT INTO categoriesMeal (id, name) VALUES ('1', 'starter')
-INSERT INTO categoriesMeal (id, name) VALUES ('1', 'main course')
-INSERT INTO categoriesMeal (id, name) VALUES ('1', 'dessert')
-
-
-
-*/

@@ -28,7 +28,7 @@ if(isset($_GET['q'])){
     }*/
 
     echo "<table class='mt-3'>
-<tr>
+<tr class='displayReservations'>
 <th>Heure</th>
 <th>Nom</th>
 <th>Prénom</th>
@@ -37,7 +37,7 @@ if(isset($_GET['q'])){
 </tr>";
 
     foreach($result as $row) {
-        echo "<tr>";
+        echo "<tr class='displayReservations'>";
         echo "<td>".$row['hour']."</td>";
         if(isset($row['Ulastname'])){
             echo "<td>".$row['Ulastname']."</td>";

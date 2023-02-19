@@ -23,7 +23,7 @@ try {
         firstname VARCHAR(50) NOT NULL,
         email VARCHAR(254) NOT NULL,
         phoneNumber VARCHAR(20) NOT NULL,
-        password CHAR(60) NOT NULL,
+        password CHAR(72) NOT NULL,
         defaultNbrGuest VARCHAR(2),
         allergies VARCHAR(150),
         isAdmin INT(1) DEFAULT 0)');
@@ -34,7 +34,7 @@ try {
        VALUES (UUID(), :lastname, :firstname, :email, :phoneNumber, :password, :nbr, :allergies, :isAdmin)');
     $statement->bindValue(':lastname', 'Admin');
     $statement->bindValue(':firstname', 'Admin');
-    $statement->bindValue(':email', 'admin@gmail.com');
+    $statement->bindValue(':email', 'admin@lqa.fr');
     $statement->bindValue(':phoneNumber', '0202');
     $statement->bindValue(':password', password_hash('0202', PASSWORD_BCRYPT));
     $statement->bindValue(':nbr', 2);
@@ -43,7 +43,48 @@ try {
 
     $statement->execute();
 
-/**
+    /*Création client 1*/
+    $statement = $restoPdo->prepare('INSERT INTO users (
+       id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin)
+       VALUES (UUID(), :lastname, :firstname, :email, :phoneNumber, :password, :nbr, :allergies, :isAdmin)');
+    $statement->bindValue(':lastname', 'Dupont');
+    $statement->bindValue(':firstname', 'Gérard');
+    $statement->bindValue(':email', 'gerard@dpd.fr');
+    $statement->bindValue(':phoneNumber', '0202');
+    $statement->bindValue(':password', password_hash('0202', PASSWORD_BCRYPT));
+    $statement->bindValue(':nbr', 2);
+    $statement->bindValue(':allergies', '');
+    $statement->bindValue(':isAdmin', 0);
+
+    $statement->execute();
+
+        /*Recup de son UUID*/
+        $statement= $restoPdo->prepare('SELECT id FROM users WHERE lastname = "Dupont"');
+        $statement->execute();
+        $user1 = $statement->fetch()[0];
+
+    /*Création client 2*/
+    $statement = $restoPdo->prepare('INSERT INTO users (
+       id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin)
+       VALUES (UUID(), :lastname, :firstname, :email, :phoneNumber, :password, :nbr, :allergies, :isAdmin)');
+    $statement->bindValue(':lastname', 'Martinel');
+    $statement->bindValue(':firstname', 'Jean');
+    $statement->bindValue(':email', 'jean@mtl.fr');
+    $statement->bindValue(':phoneNumber', '0303');
+    $statement->bindValue(':password', password_hash('0202', PASSWORD_BCRYPT));
+    $statement->bindValue(':nbr', 2);
+    $statement->bindValue(':allergies', 'Gluten - Lactose');
+    $statement->bindValue(':isAdmin', 0);
+
+    $statement->execute();
+
+        /*Recup de son UUID*/
+        $statement= $restoPdo->prepare('SELECT id FROM users WHERE lastname = "Martinel"');
+        $statement->execute();
+        $user2 = $statement->fetch()[0];
+
+
+    /**
  * Création table "reservations
  */
     $restoPdo->exec('CREATE TABLE reservations (
@@ -60,16 +101,19 @@ try {
         )');
 
     /*Insertion de réservations*/
-    $restoPdo->exec('INSERT INTO reservations (date, hour, nbrOfGuest, lastname, firstname, phoneNumber, allergies)
-                                VALUES ("2023-02-16", "12:00", "3", "Dupont", "Gérard", "0102030405", ""),
-                                       ("2023-02-16", "12:15", "5", "Dupond", "Albert", "0203040506", "Gluten"),
-                                       ("2023-02-16", "12:30", "2", "Martin", "Bernard", "0304050607", "Lactose"),
-                                       ("2023-02-16", "12:45", "6", "Martinel", "Jean", "0405060708", "Gluten - Lactose"),
+    $statement = $restoPdo->prepare("INSERT INTO reservations (userId, date, hour, nbrOfGuest, lastname, firstname, phoneNumber, allergies)
+                                VALUES (:user1, '2023-02-16', '12:00', '3', NULL, NULL, NULL, NULL),
+                                       (NULL, '2023-02-16', '12:15', '5', 'Dupond', 'Albert', '0203040506', 'Gluten'),
+                                       (NULL, '2023-02-16', '12:30', '2', 'Martin', 'Bernard', '0304050607', 'Lactose'),
+                                       (:user2, '2023-02-16', '12:45', '6', NULL, NULL, NULL, 'Gluten - Lactose'),
 
-                                       ("2023-02-16", "19:00", "2", "Martin", "Bernard", "0304050607", "Lactose"),
-                                       ("2023-02-16", "19:15", "2", "Dupont", "Gérard", "0102030405", ""),
-                                       ("2023-02-16", "19:30", "3", "Martinel", "Jean", "0405060708", "Gluten - Lactose"),
-                                       ("2023-02-16", "19:45", "2", "Dupond", "Albert", "0203040506", "Gluten")');
+                                       (NULL, '2023-02-16', '19:00', '2', 'Martin', 'Bernard', '0304050607', 'Lactose'),
+                                       (:user1, '2023-02-16', '19:15', '2', NULL, NULL, NULL, NULL),
+                                       (:user2, '2023-02-16', '19:30', '3', NULL, NULL, NULL, 'Gluten - Lactose'),
+                                       (NULL, '2023-02-16', '19:45', '2', 'Dupond', 'Albert', '0203040506', 'Gluten')");
+    $statement->bindValue(':user1', $user1);
+    $statement->bindValue(':user2', $user2);
+    $statement->execute();
 
 /**
  * Création table categoriesMeal

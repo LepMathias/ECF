@@ -8,7 +8,8 @@ if(isset($_GET['q'])){
 
     $statement = $pdo->prepare("SELECT reservations.*,
                                         users.lastname AS Ulastname,
-                                        users.firstname AS Ufirstname
+                                        users.firstname AS Ufirstname,
+                                        users.phoneNumber AS UphoneNumber
                                         FROM reservations 
                                     LEFT JOIN users 
                                         ON reservations.userId = users.id 
@@ -43,11 +44,12 @@ if(isset($_GET['q'])){
         if(isset($row['Ulastname'])){
             echo "<td>".$row['Ulastname']."</td>";
             echo "<td>".$row['Ufirstname']."</td>";
+            echo "<td>".$row['UphoneNumber']."</td>";
         } else {
             echo "<td>".$row['lastname']."</td>";
             echo "<td>".$row['firstname']."</td>";
+            echo "<td>".$row['phoneNumber']."</td>";
         }
-        echo "<td>".$row['phoneNumber']."</td>";
         echo "<td>".$row['nbrOfGuest']."</td>";
         echo "<td>".$row['allergies']."</td>";
         echo "<tr>";

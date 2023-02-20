@@ -106,7 +106,7 @@
                     <input type="password" name="password" id="password" class="form-control" required>
 
                     <input name="log-in_form" value="tryToLog" type="hidden"/>
-                    <button type="submit" class="btn btn-menu">Submit</button>
+                    <button type="submit" class="btn btn-menu">Se connecter</button>
                 </form>
             </div>
         </div>

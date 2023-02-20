@@ -18,11 +18,8 @@ footer p {
 .text-left {
     text-align: left;
 
-}  #reg-modal-btn {
-    background-color: #583408;
-    color: #ffffff;
-    border: none;
-   }
+}
+
 /*--------------------------------------------------------------
 Schedules table
 --------------------------------------------------------------*/
@@ -42,13 +39,6 @@ th {
 
 tfoot th {
     text-align: right;
-}
-
-@media (max-width: 700px) {
-    td, th, h5 {
-        font-size: 4vw;
-        padding: 2vw;
-    }
 }
 
 /*--------------------------------------------------------------
@@ -91,6 +81,12 @@ Modal
 .modal-title {
     color: #ffffff;
     text-align: center;
+}
+
+#reg-modal-btn {
+    background-color: #583408;
+    color: #ffffff;
+    border: none;
 }
 /*--------------------------------------------------------------
 # Form
@@ -177,4 +173,11 @@ select #note-select {
     width: 50%;
     margin-top: 2vh;
     margin-bottom: 1vh;
+}
+
+@media (max-width: 700px) {
+    td, th, h5 {
+        font-size: 4vw;
+        padding: 2vw;
+    }
 }

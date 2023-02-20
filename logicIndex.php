@@ -59,6 +59,6 @@ try {
         $settingManager->updateSetting($_POST['schedulesFooter'], $_POST['settingId']);
     }
 } catch (PDOException $e){
-    file_put_contents('dblogs.log', $e->getMessage() . PHP_EOL, FILE_APPEND);
+    file_put_contents('db/dblogs.log', $e->getMessage() . PHP_EOL, FILE_APPEND);
     echo "<script>alert('Une erreur s\'est produite. Contactez l\'administrateur')</script>";
 }

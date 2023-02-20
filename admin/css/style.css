@@ -76,7 +76,7 @@ tfoot th {
 }
 
 @media (max-width: 700px){
-    td, th, h5 {
+    td, th {
         font-size: 3vw;
         padding: 2px;
     }

@@ -17,15 +17,13 @@ class SettingManager
     }
     public function updateSetting( $setting, $id)
     {
-        $this->pdo->exec("UPDATE settings 
-                                                SET content = $setting 
-                                                WHERE id = $id");
-        /*$statement = $this->pdo->prepare('UPDATE settings
+
+        $statement = $this->pdo->prepare('UPDATE settings
                                                 SET content = :setting
                                                 WHERE id = :id');
         $statement->bindValue(':setting', $setting);
         $statement->bindValue(':id', $id);
 
-        $statement->execute();*/
+        $statement->execute();
     }
 }
